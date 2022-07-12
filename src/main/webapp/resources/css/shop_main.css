@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+#box{
+	width: 850px;
+	height: 650px;
+	margin: auto;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+#header{
+	width: 100%;
+	height: 230px;	
+	text-align: center;
+}
+
+#content{
+	width: 100%;
+	height: 80%; 
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	background: gray;
+	text-align: center;
+}
+
+#footer{
+	width: 100%;
+	height: 80px;
+	background: white;
+	text-align: center;
+}
+
+#copyright{
+	width:100%;
+	text-align:center;
+	color: darkgray;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#shop_table{
+	text-align: center;
+	width: 50%;
+	height:100%;
+	float: left;
+}
+
+table{
+	width:90%;
+	height:80%;
+	margin-left: 30px;
+	margin-top: 50px;
+}
+
+#skill_point{
+	text-align: right;
+}
+
+#skill_check{
+	text-align: center;
+	height: 200px;
+}
+
+#skill{
+	margin-right: 10px;
+	margin-left: 5px;
+}
+
+#random_items{
+	width: 50%;
+	height:50%;
+	text-align: center;
+	float: right;
+	margin-top: 80px;
+}
+
+#random1{
+	width: 150px;
+	height: 150px;
+}
+
+#random2{
+	width: 150px;
+	height: 150px;
+}
+
+#random3{
+	width: 150px;
+	height: 150px;
+}
+
+#inventory{
+	height: 30px;
+	width: 30px;
+	
+}
+
+#clear{
+	clear: both;
+}
+
+p{
+	text-align: center;
+	
+}
+
+

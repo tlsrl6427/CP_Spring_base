@@ -90,7 +90,7 @@ public class CharacterController {
 		application.setAttribute("main_ch", main_ch);
 		request.setAttribute("main_ch", main_ch);
 				
-		return "game/shop/shop";
+		return "game/shop/shop_test";
 	}
 
 	@RequestMapping("character_choice_form.do")

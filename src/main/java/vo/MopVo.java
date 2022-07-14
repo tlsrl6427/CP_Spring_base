@@ -11,7 +11,8 @@ public class MopVo {
 	int m_armor;
 	String 	m_skill;
 	String 	m_level;
-
+	int stage_val;
+	
 	int damage_reduced = 0;// 받는 피해 감소
 	int damage_reduced_turn = 0;// 받는 피해 감소 턴수
 	int dot_damage = 0;// 도트뎀

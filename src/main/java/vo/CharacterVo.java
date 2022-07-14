@@ -1,5 +1,6 @@
 package vo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class CharacterVo {
 	String c_img;
 	
 	List<SkillVo> skill_vo;
+	List<ItemVo> item_vo = new ArrayList<ItemVo>();
 	
 	int active_skill1_level =0;
 	int active_skill2_level =0;
@@ -103,6 +105,13 @@ public class CharacterVo {
 	}
 	
 	
+
+	public List<ItemVo> getItem_vo() {
+		return item_vo;
+	}
+	public void setItem_vo(List<ItemVo> item_vo) {
+		this.item_vo = item_vo;
+	}
 	public int getDot_damage() {
 		return dot_damage;
 	}

@@ -5,9 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="item">
 
  	<select id="item_list" resultType="vo.ItemVo">
- 		select * from projectDB where i_idx= #{ i_idx }
+ 		select * from item
  	</select>
 	
+	<select id="item_one" parameterType="int" resultType="vo.ItemVo">
+ 		select * from item where i_idx= #{ i_idx }
+ 	</select>
+ 	
 </mapper>
 
 

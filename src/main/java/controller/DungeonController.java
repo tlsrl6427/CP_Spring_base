@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.CharacterDao;
 import dao.DungeonDao;
+import dao.MopDao;
 import dao.SkillDao;
 import info.character.Warrior;
 import vo.AttackVo;
@@ -47,6 +48,8 @@ public class DungeonController {
 	@Autowired
 	SkillDao skill_dao;
 
+	MopDao mop_dao;
+	
 	public void setDungeon_dao(DungeonDao dungeon_dao) {
 		this.dungeon_dao = dungeon_dao;
 	}
@@ -55,8 +58,12 @@ public class DungeonController {
 		this.skill_dao = skill_dao;
 	}
 
+	public void setMop_dao(MopDao mop_dao) {
+		this.mop_dao = mop_dao;
+	}
+
 	@RequestMapping("dungeon.do")
-	public String dungeon(Model model) {
+	public String dungeon(Model model, int stage_val, int[] s_idx) {
 
 		// 캐릭터 정보랑 스킬 둘 다 넘겨야 됨
 		// 스킬 mapper 만들고 s_idx 이용해서 캐릭터 정보 1개(application에 저장되어서 걍 넘기면 딤)
@@ -65,6 +72,7 @@ public class DungeonController {
 
 		CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
 		MopVo mop = new MopVo();
+		//mop = mop_dao.selectOne(stage_val);
 		///////////////////////////////////////
 		//실험용 몹 정보
 		mop.setM_idx(1);
@@ -77,10 +85,13 @@ public class DungeonController {
 		///////////////////////////////////////
 		application.setAttribute("mop", mop);
 		application.setAttribute("main_ch", main_ch);
+		application.setAttribute("s_idx", s_idx);
+		//*main_ch를 복사한 객체를 addAttribute 해야될듯
 		model.addAttribute("mop", mop);
 		model.addAttribute("main_ch", main_ch);
+		model.addAttribute("s_idx", s_idx);
 
-		return "game/dungeon/dungeon_stage1";
+		return "game/dungeon/dungeon_test";
 	}
 
 	@RequestMapping(value="battle/attack.do", produces = "text/json; charset=utf-8;")
@@ -106,10 +117,6 @@ public class DungeonController {
 			main_ch.attack_mop(mop, attack_mop_vo, s_idx);
 		}
 		
-
-		application.removeAttribute("main_ch");
-		application.removeAttribute("mop");
-
 		application.setAttribute("main_ch", main_ch);
 		application.setAttribute("mop", mop);
 

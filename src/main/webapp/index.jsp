@@ -8,7 +8,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-
+	var stage_val = 0;
 	$(function() {
 		$.ajax({
 			url : 'user/main.do',

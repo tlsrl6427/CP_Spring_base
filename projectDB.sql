@@ -69,7 +69,8 @@ create table mop
 	m_ad				int,						-- Mop Attack Damage
 	m_armor			int,						-- Mop armor
 	m_skill 			varchar(30),				-- Mop Skill
-	m_level				varchar(30)					-- Mop Level('일반', '네임드', '중간보스', '보스')
+	m_level				varchar(30),		-- Mop Level('일반', '네임드', '중간보스', '보스')
+	stage_val			int						--Mop Stage Value(어느 스테이지에서 나오는지)
 )
 
 

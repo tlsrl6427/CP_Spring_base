@@ -34,10 +34,12 @@
 	<beans:bean class="controller.DungeonController">
 		<beans:property name="dungeon_dao" ref = "dungeon_dao"></beans:property>
 		<beans:property name="skill_dao" ref = "skill_dao"></beans:property>
+		<beans:property name="mop_dao" ref = "mop_dao"></beans:property>
 	</beans:bean>
 	
 	<beans:bean class="controller.ShopController">
 		<beans:property name="shop_dao" ref = "shop_dao"></beans:property>
+		<beans:property name="item_dao" ref = "item_dao"></beans:property>
 	</beans:bean>
 	
 	<beans:bean class="controller.UserController">

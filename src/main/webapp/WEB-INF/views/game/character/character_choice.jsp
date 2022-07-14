@@ -9,7 +9,7 @@
 //선택한 캐릭터 정보 보내기
 	function choice(){
 		var c_idx = $("input:radio:checked").val();
-		
+		stage_val++;
 		$.ajax({
 			url: 'game/character/character_choice.do',
 			data: { 'c_idx': c_idx},

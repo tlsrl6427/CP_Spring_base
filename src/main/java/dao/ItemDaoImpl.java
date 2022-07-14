@@ -19,4 +19,12 @@ public class ItemDaoImpl implements ItemDao {
 		return sqlSession.selectList("item.item_list");
 	}
 
+	@Override
+	public ItemVo selectOne(int i_idx) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("item.item_one", i_idx);
+	}
+	
+	
+
 }

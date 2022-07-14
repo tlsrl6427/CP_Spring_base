@@ -29,4 +29,12 @@
 		<property name="sqlSession" ref="sqlSession"/>
 	</bean>
 	
+	<bean id="mop_dao" class="dao.MopDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
+	<bean id="item_dao" class="dao.ItemDaoImpl">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
 </beans>

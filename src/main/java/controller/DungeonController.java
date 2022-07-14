@@ -91,7 +91,7 @@ public class DungeonController {
 		model.addAttribute("main_ch", main_ch);
 		model.addAttribute("s_idx", s_idx);
 
-		return "game/dungeon/dungeon_test";
+		return "game/dungeon/dungeon_skeleton01";
 	}
 
 	@RequestMapping(value="battle/attack.do", produces = "text/json; charset=utf-8;")

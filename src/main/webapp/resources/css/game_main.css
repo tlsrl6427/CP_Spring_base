@@ -21,7 +21,7 @@
 }
 
 #stage_info{
-	width: 690px;
+	width: 830px;
 	height: 47px;
 	float: right;
 	background: red;
@@ -29,10 +29,21 @@
 }
 
 #game_page{
-	width: 690px;
+	/* 게임사용가능 너비는 700px */
+	width: 830px;
 	height: 330px;
 	float: right;
 	background: yellow;
+}
+
+#guard_info{
+
+	width: 110px;
+	height: 310px;
+	float: left;
+	background: navy;
+	margin: 10px;
+	margin-left: 10px;
 	
 }
 
@@ -44,39 +55,47 @@
 }
 
 #state_page{
-	
-	width: 225px;
+	width: 380px;
 	height: 120px;
 	float: left;
 
 }
 
+#user_state{
+	background: green;
+	height: 80px;
+}
+
+#user_state > table{
+	width: 375px;
+	text-align: left;
+	margin-left: 3px;
+}
+
+#btn_state{
+	background: lightgreen;
+	height: 40px;
+}
+
 #story_page{
-	
-	width: 465px;
+	width: 450px;
 	height: 120px;
 	float: right;
 	background: orange;
+}
 
+#txt{
+	resize: none;
+	width: 445px;
+	height: 115px;
 }
 
 #state_story{
 	
-	width: 690px;
+	width: 830px;
 	height: 70px;
 	float: right;
 	background: gray;
-	
-}
-
-#guard_info{
-
-	width: 130px;
-	height: 96%;
-	float: left;
-	background: navy;
-	margin: 10px;
-	margin-left: 10px;
 	
 }
 
@@ -100,3 +119,22 @@
 	color: darkgray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
+
+#btn_skill, #btn_skill1{
+	width:30px;
+	height:30px;
+	margin-top: 5px;
+	margin-right: 10px;
+}
+
+#btn_skill1{
+	margin-left: 70px;
+}
+
+#btn_skill2{
+	width:30px;
+	height:30px;
+	margin-top: 5px;
+	margin-right: 50px;
+}
+

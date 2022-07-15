@@ -54,12 +54,22 @@ table{
 
 #skill_check{
 	text-align: center;
-	height: 200px;
+	height: 300px;
 }
 
-#skill{
+#skill_no{
+	
+	margin-right: 30px;
+}
+
+#skill, #skill_l{
 	margin-right: 10px;
 	margin-left: 5px;
+}
+
+#skill_l{
+	
+	margin-left: 35px; 
 }
 
 #random_items{

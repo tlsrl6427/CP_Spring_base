@@ -115,6 +115,7 @@
 		stage_val++;
 		$.ajax({
 			url: 'game/shop/shop.do',
+			data: {"stage_val": stage_val},
 			success: function(res_data){
 				$('#disp').html(res_data);
 			}
@@ -127,6 +128,7 @@
 		alert("상점에서 부활합니다");
 		$.ajax({
 			url: 'game/shop/shop.do',
+			data: {"stage_val": stage_val},
 			success: function(res_data){
 				$('#disp').html(res_data);
 			}

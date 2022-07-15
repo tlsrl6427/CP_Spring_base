@@ -24,6 +24,12 @@ public class ItemDaoImpl implements ItemDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("item.item_one", i_idx);
 	}
+
+	@Override
+	public List<ItemVo> selectList_stage(String i_level) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("item.item_list_stage",  i_level);
+	}
 	
 	
 

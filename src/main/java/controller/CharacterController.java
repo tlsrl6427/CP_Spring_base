@@ -39,7 +39,7 @@ public class CharacterController {
 	}
 
 	@RequestMapping("character_choice.do")
-	public String character_choice(int c_idx) {
+	public String character_choice(int c_idx, Model model) {
 		//캐릭터 선택에서 넘어왔으면 받은 캐릭터 정보 토대로 pageScope에 추가
 		CharacterVo ex_c_vo = character_dao.selectOne(c_idx);
 		CharacterVo main_ch = null;
@@ -88,9 +88,9 @@ public class CharacterController {
 		}
 		
 		application.setAttribute("main_ch", main_ch);
-		request.setAttribute("main_ch", main_ch);
+		model.addAttribute("stage_val", 1);
 				
-		return "game/shop/shop_test";
+		return "redirect:../shop/shop.do";
 	}
 
 	@RequestMapping("character_choice_form.do")

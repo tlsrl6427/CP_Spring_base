@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import dao.CharacterDao;
 import dao.ItemDao;
 import dao.ShopDao;
+import item.ItemEffect;
 import netscape.javascript.JSObject;
 import vo.CharacterVo;
 import vo.ItemVo;
@@ -49,12 +53,39 @@ public class ShopController {
 	}
 
 	@RequestMapping("shop.do")
-	public String shop(Model model) {
+	public String shop(Model model, int stage_val) {
 
 		
 		CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
 		model.addAttribute("main_ch", main_ch);
-
+		
+		List<ItemVo> item_list = new ArrayList<ItemVo>();
+		List<ItemVo> selected_item_list = null;
+		
+		int stage_num = stage_val / 5 + 1;
+		//System.out.println("stage_num: " + stage_num);
+		
+		if(stage_num==1) {//1 스테이지 일때
+			item_list.addAll(item_dao.selectList_stage("일반"));
+			selected_item_list = ItemEffect.effect_to_item(item_list, stage_num);
+		}else if(stage_num==2) {//2 스테이지 일때
+			item_list.addAll(item_dao.selectList_stage("일반"));
+			item_list.addAll(item_dao.selectList_stage("고급"));
+			selected_item_list = ItemEffect.effect_to_item(item_list, stage_num);
+		}else if(stage_num==3) {//3 스테이지 일때
+			item_list.addAll(item_dao.selectList_stage("일반"));
+			item_list.addAll(item_dao.selectList_stage("고급"));
+			item_list.addAll(item_dao.selectList_stage("희귀"));
+			selected_item_list = ItemEffect.effect_to_item(item_list, stage_num);
+		}
+		
+		
+		
+		for(ItemVo vo : selected_item_list) {
+			System.out.println(vo.getI_name());
+		}
+		
+		model.addAttribute("selected_item_list", selected_item_list);
 		return "game/shop/shop_test";
 	}
 

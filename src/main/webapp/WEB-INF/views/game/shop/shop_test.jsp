@@ -136,9 +136,12 @@
 			
 
 			<div id="random_items">
-				<img id="random1" src="resources/img/logo.png">
+				${ selected_item_list[0].i_name }<br>
+				${ selected_item_list[1].i_name }<br>
+				${ selected_item_list[2].i_name }<br>
+				<!-- <img id="random1" src="resources/img/logo.png">
 				<img id="random2" src="resources/img/logo.png">
-				<img id="random3" src="resources/img/logo.png"><br>
+				<img id="random3" src="resources/img/logo.png"><br>-->
 				<input type="button" id="again" value="again(cost cookie 10)"><br>
 				<button id="next_level" onclick="dungeon();">NEXT LEVEL</button>
 			</div>

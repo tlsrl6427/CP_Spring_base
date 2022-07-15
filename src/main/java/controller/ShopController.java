@@ -55,7 +55,7 @@ public class ShopController {
 		CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
 		model.addAttribute("main_ch", main_ch);
 
-		return "game/shop/shop_test";
+		return "game/shop/shop";
 	}
 
 	@RequestMapping(value="item_buy.do", produces="text/json; charset=utf-8;")

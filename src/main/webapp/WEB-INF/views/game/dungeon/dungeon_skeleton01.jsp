@@ -147,7 +147,13 @@
          <div id="game_page">
             <div>
                <div id="guard_info">
-                  <table></table>
+                  <table border="1" style="margin: 5px;">
+                  	<tr><td id="items">머리방어구</td></tr>
+                  	<tr><td id="items">상체방어구</td></tr>
+                  	<tr><td id="items">하체방어구</td></tr>
+                  	<tr><td id="items">무기</td></tr>
+                  	<tr><td id="items">물약</td></tr>
+                  </table>
            	   </div>
            	</div>  
            	
@@ -169,7 +175,7 @@
 							HP
 						</div>
 					</div>
-					<img id="warrior" src="${ pageContext.request.contextPath }/resources/img/magician.png">
+					<img id="warrior1" src="${ pageContext.request.contextPath }/resources/img/magician.png">
 	            </div>
             </div>
             

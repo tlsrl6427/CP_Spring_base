@@ -38,12 +38,27 @@
 
 #guard_info{
 
-	width: 110px;
+	width: 70px;
 	height: 310px;
 	float: left;
 	background: skyblue;
 	margin: 10px;
 	margin-left: 10px;
+	
+}
+
+#items {
+	
+	width: 60px;
+	height: 60px;
+	
+}
+
+#warrior1{
+
+	width: 100px;
+	height: 200px;
+	transform: rotateY(180deg);
 	
 }
 
@@ -67,9 +82,10 @@
 }
 
 #user_state > table{
-	width: 375px;
+	width: 100%;
 	text-align: left;
 	margin-left: 3px;
+	height: 80px;
 }
 
 #btn_state{
@@ -150,6 +166,6 @@
 	width: 150px; 
 	height: 250px; 
 	float: right; 
-	margin-right: 50px; 
+	margin-right: 70px; 
 	margin-top: 20px;
 }

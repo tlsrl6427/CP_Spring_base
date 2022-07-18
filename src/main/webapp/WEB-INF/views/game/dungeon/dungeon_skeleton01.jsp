@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/game_main.css">
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/logo.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 </style>
@@ -122,6 +125,8 @@
       }) 
    }
    
+   
+   
 </script>
 </head>
 <body>
@@ -142,16 +147,38 @@
          <div id="game_page">
             <div>
                <div id="guard_info">
-               <table></table>
-              </div>
-               <img id="warrior" src="${ pageContext.request.contextPath }/resources/img/warrior.png">
-               <img id="warrior" src="${ pageContext.request.contextPath }/resources/img/magician.png">
+                  <table></table>
+           	   </div>
+           	</div>  
+           	
+           	<div id="user_hp_bar">
+	            <div>
+		            <div class="progress" style="width: 100%; margin-top: 10px;">
+						<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+							HP
+						</div>
+					</div>
+					<img id="warrior" src="${ pageContext.request.contextPath }/resources/img/warrior.png">
+	            </div>
             </div>
+            
+            <div id="mop_hp_bar">
+	            <div>
+		            <div class="progress" style="width: 100%; margin-top: 10px;">
+						<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+							HP
+						</div>
+					</div>
+					<img id="warrior" src="${ pageContext.request.contextPath }/resources/img/magician.png">
+	            </div>
+            </div>
+            
          </div>
+         
          
          <div id="state_story">
             <div id="story_page">
-               <textarea id="txt"></textarea>
+               <textarea id="txt" readonly="readonly"></textarea>
             </div>
             
             <div id="state_page">

@@ -15,14 +15,28 @@
 //던전 정보 보내기
 //스테이지 넘어갈때마다 dungeon변수에 +해줘서 불러내야할 던전정보 특정하기
 	function dungeon(){
-		a++;
-		console.log("a: "+a);
+	    let s_idx = [];
+	      var stage_val = 1;
+	      if ($("input:checkbox:checked").length < 4) {
+	         alert("스킬은 총 4개를 선택해 주세요!");
+	         return;
+	      }
+
+	      $("input:checkbox:checked").each(function(i,iVal) {
+	         s_idx.push($(this).val());
+	      });
+	      
+	      jQuery.ajaxSettings.traditional = true;   // 이거 추가 안 하면 parameter 넘어갈 때 %5B%5D가 추가되어서 넘어감
+	      
 		$.ajax({
 			url: 'game/dungeon/dungeon.do',
+			data: {"stage_val": stage_val, "s_idx": s_idx},
 			success: function(res_data){
 				$('#disp').html(res_data);
 			}
 		})
+		
+		
 	}
 </script>
 <script type="text/javascript">

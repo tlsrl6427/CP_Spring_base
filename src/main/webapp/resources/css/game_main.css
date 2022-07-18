@@ -41,7 +41,7 @@
 	width: 110px;
 	height: 310px;
 	float: left;
-	background: navy;
+	background: skyblue;
 	margin: 10px;
 	margin-left: 10px;
 	
@@ -86,8 +86,8 @@
 
 #txt{
 	resize: none;
-	width: 445px;
-	height: 115px;
+	width: 450px;
+	height: 120px;
 }
 
 #state_story{
@@ -138,3 +138,18 @@
 	margin-right: 50px;
 }
 
+#user_hp_bar{
+	width: 150px; 
+	height: 250px; 
+	float: left; 
+	margin-left: 50px; 
+	margin-top: 20px;
+}
+
+#mop_hp_bar{
+	width: 150px; 
+	height: 250px; 
+	float: right; 
+	margin-right: 50px; 
+	margin-top: 20px;
+}

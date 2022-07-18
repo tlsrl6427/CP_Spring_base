@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CharacterVo {
+public class CharacterVo implements Cloneable{
 
 	int 	c_idx;
 	String 	c_name;
@@ -18,17 +18,26 @@ public class CharacterVo {
 	String 	c_p_skill;
 	String c_img;
 	
-	List<SkillVo> skill_vo;
-	List<ItemVo> item_vo = new ArrayList<ItemVo>();
+	int c_hp_percent;
+	int c_ad_percent;
+	int c_ap_percent;
+	int c_armor_percent;
 	
-	int active_skill1_level =0;
-	int active_skill2_level =0;
-	int active_skill3_level =0;
-	int active_skill4_level =0;
-	int active_skill5_level =0;
-	int active_skill6_level =0;
-	int active_skill7_level =0;
-	int active_skill8_level =0;
+	List<SkillVo> skill_vo;
+	//머리:0, 상체:1, 하체:2, 무기:3, 물약:4
+	List<ItemVo>	item_list = new ArrayList<ItemVo>();
+	
+	public CharacterVo() {
+		//super();
+		item_list.add(new ItemVo());
+		item_list.add(new ItemVo());
+		item_list.add(new ItemVo());
+		item_list.add(new ItemVo());
+		item_list.add(new ItemVo());
+	}
+	
+	int[] active_skill_level = new int[8];
+	int[] active_skill_remaining_turn = new int[8];
 	
 	int damage_reduced = 0;// 받는 피해 감소
 	int damage_reduced_turn = 0;// 받는 피해 감소 턴수
@@ -45,8 +54,9 @@ public class CharacterVo {
 	public void active_skill7(MopVo mopVo, AttackVo attack_mop_vo) {}
 	public void active_skill8(MopVo mopVo, AttackVo attack_mop_vo) {}
 	
+	//몬스터에게 데미지 입히기
 	public void attack_mop(MopVo mopVo, AttackVo attack_mop_vo, int s_idx) {
-		
+	
 		if(s_idx==0) {
 			attack_mop_vo.setDamage(this.c_ad * (5000 / ( 50 + mopVo.getM_armor() ) ) / 100);
 			mopVo.setM_hp(mopVo.getM_hp() - this.c_ad * (5000 / ( 50 + mopVo.getM_armor() ) ) / 100);
@@ -57,6 +67,8 @@ public class CharacterVo {
 		}else {
 			SkillVo vo = getSkill_s_idx(s_idx);
 			attack_mop_vo.setName(vo.getS_name());
+			//쿨 다시 늘리기
+			active_skill_remaining_turn[vo.getS_num()-1] = vo.getS_turn();
 			switch(vo.getS_num()) {
 				case 1: active_skill1(mopVo, attack_mop_vo); break;
 				case 2: active_skill2(mopVo, attack_mop_vo); break;
@@ -71,6 +83,7 @@ public class CharacterVo {
 		}
 	}
 	
+	//s_idx에 해당하는 스킬 가져오기
 	public SkillVo getSkill_s_idx(int s_idx) {
 		
 		SkillVo vo = new SkillVo();
@@ -80,20 +93,30 @@ public class CharacterVo {
 		return vo;
 	}
 	
+	//도트뎀, cc기 등 적용시키기, 스킬 쿨 줄이기
 	public String extra_skill() {
 		String extra_battle_info = "";
 		
+		//스킬 쿨 줄이기
+		for(int i=0; i<active_skill_remaining_turn.length; i++) {
+			if(active_skill_remaining_turn[i] > 0)
+				active_skill_remaining_turn[i]--;
+		}
+		
+		//cc걸렸는지 판단하기
 		if(this.cc_turn!=0) {
 			this.cc_turn--;
 			return "cc";
 		}
 		
+		//도트데미지
 		if(this.dot_damage_turn!=0) {
 			this.dot_damage_turn--;
 			this.c_hp -= this.dot_damage;
 			extra_battle_info = extra_battle_info + String.format("%s가 %d의 도트뎀을 받았습니다", this.c_name, this.getDot_damage());
 		}
 		
+		//받는 피해 감소
 		if(this.damage_reduced_turn!=0) {
 			this.damage_reduced_turn--;
 		}else if(this.damage_reduced_turn==0) {
@@ -104,13 +127,116 @@ public class CharacterVo {
 		return extra_battle_info;
 	}
 	
-	
-
-	public List<ItemVo> getItem_vo() {
-		return item_vo;
+	//아이템 적용시키기
+	public void item_buy(ItemVo vo) {
+		//어느 파츠인지 구분
+		if(vo.getI_category().equals("머리")) {
+			item_except(item_list.get(0));
+			item_apply(vo);
+			item_list.set(0, vo);
+		}
+		else if(vo.getI_category().equals("상체")){
+			item_except(item_list.get(1));
+			item_apply(vo);
+			item_list.set(1, vo);
+		}
+		else if(vo.getI_category().equals("하체")){
+			item_except(item_list.get(2));
+			item_apply(vo);
+			item_list.set(2, vo);
+		}
+		else if(vo.getI_category().equals("무기")){
+			item_except(item_list.get(3));
+			item_apply(vo);
+			item_list.set(3, vo);
+		}
+		else {
+			item_except(item_list.get(4));
+			item_apply(vo);
+			item_list.set(4, vo);
+		}
 	}
-	public void setItem_vo(List<ItemVo> item_vo) {
-		this.item_vo = item_vo;
+
+	public void item_apply(ItemVo vo) {
+		System.out.println("구매한 아이템: " + vo.getI_name());
+		this.c_hp += vo.i_hp;
+		this.c_ad += vo.i_ad;
+		this.c_ap += vo.i_ap;
+		this.c_armor += vo.i_armor;
+		this.c_critical += vo.i_critical;
+		this.c_avd += vo.i_avd;
+		this.c_hp_percent += vo.i_hp_percent;
+		this.c_ad_percent += vo.i_ad_percent;
+		this.c_ap_percent += vo.i_ap_percent;
+		this.c_armor_percent += vo.i_armor_percent;
+	}
+	
+	public void item_except(ItemVo vo) {
+		System.out.println("판매한 아이템: " + vo.getI_name());
+		this.c_hp -= vo.i_hp;
+		this.c_ad -= vo.i_ad;
+		this.c_ap -= vo.i_ap;
+		this.c_armor -= vo.i_armor;
+		this.c_critical -= vo.i_critical;
+		this.c_avd -= vo.i_avd;
+		this.c_hp_percent -= vo.i_hp_percent;
+		this.c_ad_percent -= vo.i_ad_percent;
+		this.c_ap_percent -= vo.i_ap_percent;
+		this.c_armor_percent -= vo.i_armor_percent;
+	}
+
+	public void item_percent_apply() {
+		
+	 	//퍼센트 적용
+		this.c_hp = this.c_hp * (100 + this.c_hp_percent) / 100;
+		this.c_ad = this.c_ad * (100 + this.c_ad_percent) / 100;
+		this.c_ap = this.c_ap * (100 + this.c_ap_percent) / 100;
+		this.c_armor = this.c_armor * (100 + this.c_armor_percent) / 100;
+
+	 
+	}
+
+	public int[] getActive_skill_level() {
+		return active_skill_level;
+	}
+	public void setActive_skill_level(int[] active_skill_level) {
+		this.active_skill_level = active_skill_level;
+	}
+	public int[] getActive_skill_remaining_turn() {
+		return active_skill_remaining_turn;
+	}
+	public void setActive_skill_remaining_turn(int[] active_skill_remaining_turn) {
+		this.active_skill_remaining_turn = active_skill_remaining_turn;
+	}
+	public int getC_hp_percent() {
+		return c_hp_percent;
+	}
+	public void setC_hp_percent(int c_hp_percent) {
+		this.c_hp_percent = c_hp_percent;
+	}
+	public int getC_ad_percent() {
+		return c_ad_percent;
+	}
+	public void setC_ad_percent(int c_ad_percent) {
+		this.c_ad_percent = c_ad_percent;
+	}
+	public int getC_ap_percent() {
+		return c_ap_percent;
+	}
+	public void setC_ap_percent(int c_ap_percent) {
+		this.c_ap_percent = c_ap_percent;
+	}
+	public int getC_armor_percent() {
+		return c_armor_percent;
+	}
+	public void setC_armor_percent(int c_armor_percent) {
+		this.c_armor_percent = c_armor_percent;
+	}
+	public List<ItemVo> getItem_list() {
+		return item_list;
+	}
+	public void setItem_list(List<ItemVo> item_list) {
+		this.item_list = item_list;
 	}
 	public int getDot_damage() {
 		return dot_damage;

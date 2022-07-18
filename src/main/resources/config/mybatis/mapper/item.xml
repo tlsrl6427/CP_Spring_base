@@ -12,6 +12,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select * from item where i_idx= #{ i_idx }
  	</select>
  	
+ 	<select id="item_list_stage"  parameterType="java.lang.String" resultType="vo.ItemVo">
+ 		select * from item where i_level=#{ i_level }
+ 	</select>
+ 	
 </mapper>
 
 

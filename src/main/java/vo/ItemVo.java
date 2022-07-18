@@ -6,10 +6,102 @@ public class ItemVo {
 	String	i_class;
 	String 	i_category;
 	String 	i_name;
-	String 	i_effect;
+	String 	i_level;
+	
+	int 	i_hp;
+	int	i_hp_percent;
+	int 	i_ad;
+	int 	i_ad_percent;
+	int 	i_ap;
+	int 	i_ap_percent;
+	int 	i_armor;
+	int 	i_armor_percent;
+	int 	i_critical;
+	int 	i_avd;
+	
+	
+	int	i_effect;
+	
+	/*
+	 	i_effect
+	 	1. 피해감소
+	 	2. 피격시 데미지 입히기
+	 	3. 체력줄어드는 대신 데미지 늘어나기
+	 	4. 턴마다 공격력 늘어남
+	 	5. 턴 시작시 방어막 생성
+	 	6. 체력 1로 부활
+	 	
+	 */
+	
 	
 	public int getI_idx() {
 		return i_idx;
+	}
+	public int getI_hp_percent() {
+		return i_hp_percent;
+	}
+	public void setI_hp_percent(int i_hp_percent) {
+		this.i_hp_percent = i_hp_percent;
+	}
+	public int getI_ad_percent() {
+		return i_ad_percent;
+	}
+	public void setI_ad_percent(int i_ad_percent) {
+		this.i_ad_percent = i_ad_percent;
+	}
+	public int getI_ap_percent() {
+		return i_ap_percent;
+	}
+	public void setI_ap_percent(int i_ap_percent) {
+		this.i_ap_percent = i_ap_percent;
+	}
+	public int getI_armor_percent() {
+		return i_armor_percent;
+	}
+	public void setI_armor_percent(int i_armor_percent) {
+		this.i_armor_percent = i_armor_percent;
+	}
+	public int getI_hp() {
+		return i_hp;
+	}
+	public void setI_hp(int i_hp) {
+		this.i_hp = i_hp;
+	}
+	public int getI_ad() {
+		return i_ad;
+	}
+	public void setI_ad(int i_ad) {
+		this.i_ad = i_ad;
+	}
+	public int getI_ap() {
+		return i_ap;
+	}
+	public void setI_ap(int i_ap) {
+		this.i_ap = i_ap;
+	}
+	public int getI_armor() {
+		return i_armor;
+	}
+	public void setI_armor(int i_armor) {
+		this.i_armor = i_armor;
+	}
+	public int getI_critical() {
+		return i_critical;
+	}
+	public void setI_critical(int i_critical) {
+		this.i_critical = i_critical;
+	}
+	public int getI_avd() {
+		return i_avd;
+	}
+	public void setI_avd(int i_avd) {
+		this.i_avd = i_avd;
+	}
+	public int getI_effect() {
+		return i_effect;
+	}
+	public void setI_effect(int i_effect) {
+		this.i_effect = i_effect;
 	}
 	public void setI_idx(int i_idx) {
 		this.i_idx = i_idx;
@@ -32,12 +124,13 @@ public class ItemVo {
 	public void setI_name(String i_name) {
 		this.i_name = i_name;
 	}
-	public String getI_effect() {
-		return i_effect;
+	public String getI_level() {
+		return i_level;
 	}
-	public void setI_effect(String i_effect) {
-		this.i_effect = i_effect;
+	public void setI_level(String i_level) {
+		this.i_level = i_level;
 	}
+	
 
 	
 	

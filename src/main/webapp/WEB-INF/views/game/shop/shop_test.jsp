@@ -36,13 +36,30 @@
 		})
 	}
 	
-	function item_buy(){
-		var i_idx=1;
+	function item_buy(t){
+		if(confirm($(t).text()+"을(를) 구매하시겠습니까?")==false) return;
+		var i_idx=$(t).prop("id");
 		$.ajax({
 			url: 'game/shop/item_buy.do',
 			data: {"i_idx": i_idx},
 			success: function(res_data){
 				alert(res_data.item_name+"을 구매하였습니다");
+				$(t).css('visibility', 'hidden');
+			}
+		})
+	}
+	
+	function item_shuffle(){
+		if(confirm("아이템을 새로고침 하시겠습니까?")==false) return;
+		$.ajax({
+			url: 'game/shop/item_shuffle.do',
+			data: {"stage_val": stage_val},
+			success: function(res_data){
+				$('#random_items > div').each(function(index, item){
+					$(item).css('visibility', 'visible');
+					$(item).text(res_data[index].i_name);
+					$(item).attr("id", res_data[index].i_idx);
+				});
 			}
 		})
 	}
@@ -72,15 +89,15 @@
 					</tr>
 					<tr>
 						<td colspan="10" id="skill_check">
-							<input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[0].s_idx }">${ main_ch.skill_vo[0].s_name }
-		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[1].s_idx }">${ main_ch.skill_vo[1].s_name }
-		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[2].s_idx }">${ main_ch.skill_vo[2].s_name }
-		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[3].s_idx }">${ main_ch.skill_vo[3].s_name }<br><br>
-		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[4].s_idx }">${ main_ch.skill_vo[4].s_name }
-		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[5].s_idx }">${ main_ch.skill_vo[5].s_name }
-		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[6].s_idx }">${ main_ch.skill_vo[6].s_name }
-		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[7].s_idx }">${ main_ch.skill_vo[7].s_name }<br><br>
-							<input type="button" value="스킬올려조" onclick="item_buy();">
+							<input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[0].s_num }">${ main_ch.skill_vo[0].s_name }
+		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[1].s_num }">${ main_ch.skill_vo[1].s_name }
+		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[2].s_num }">${ main_ch.skill_vo[2].s_name }
+		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[3].s_num }">${ main_ch.skill_vo[3].s_name }<br><br>
+		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[4].s_num }">${ main_ch.skill_vo[4].s_name }
+		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[5].s_num }">${ main_ch.skill_vo[5].s_name }
+		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[6].s_num }">${ main_ch.skill_vo[6].s_name }
+		                     <input id="skill" type="checkbox" name="skill" value="${ main_ch.skill_vo[7].s_num }">${ main_ch.skill_vo[7].s_name }<br><br>
+							<input type="button" value="스킬올려조" >
 						</td>
 					</tr>
 					<tr id="inventory">
@@ -136,13 +153,14 @@
 			
 
 			<div id="random_items">
-				${ selected_item_list[0].i_name }<br>
-				${ selected_item_list[1].i_name }<br>
-				${ selected_item_list[2].i_name }<br>
+				<div id="${ selected_item_list[0].i_idx }" onclick="item_buy(this)">${ selected_item_list[0].i_name }</div>
+				<div id="${ selected_item_list[1].i_idx }"  onclick="item_buy(this)">${ selected_item_list[1].i_name }</div>
+				<div id="${ selected_item_list[2].i_idx }"  onclick="item_buy(this)">${ selected_item_list[2].i_name }</div><br>
 				<!-- <img id="random1" src="resources/img/logo.png">
 				<img id="random2" src="resources/img/logo.png">
 				<img id="random3" src="resources/img/logo.png"><br>-->
-				<input type="button" id="again" value="again(cost cookie 10)"><br>
+				<input type="button" id="again" value="again(cost cookie 10)"
+																onclick="item_shuffle();"><br>
 				<button id="next_level" onclick="dungeon();">NEXT LEVEL</button>
 			</div>
 			<div id="clear">

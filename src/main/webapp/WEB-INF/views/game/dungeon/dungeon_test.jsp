@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,14 +41,14 @@
 		$.ajax({
 			url: 'game/dungeon/battle/attack.do',
 			data: {'s_idx': auto_attack},
-			dataType: 'json',
 			success: function(res_data){
-				$('#main_ch_hp').html('hp: '+ res_data.main_ch_hp);
-				$('#mop_hp').html('hp: '+ res_data.mop_hp);
+				cool_time(res_data);
+				$('#main_ch_hp').html('hp: '+ res_data.main_ch.c_hp);
+				$('#mop_hp').html('hp: '+ res_data.mop.m_hp);
 				
 				var content = $("#txt").val();
-				content = content  + res_data.attack_mop_info + "\n"
-									+	res_data.attack_main_ch_info + "\n"
+				content = content  + res_data.attack_mop_vo.battle_info + "\n"
+									+	res_data.attack_main_ch_vo.battle_info + "\n"
 									+ "--------------------------------------------------------------\n";
 				$("#txt").html(content); 
 			}
@@ -58,28 +59,29 @@
 		$.ajax({
 			url: 'game/dungeon/battle/attack.do',
 			data: {'s_idx': s_idx},
-			dataType: 'json',
 			success: function(res_data){
-				
-				$('#main_ch_hp').html('hp: '+ res_data.main_ch_hp);
-				$('#mop_hp').html('hp: '+ res_data.mop_hp);
+				//res_data.main_ch.active_skill_remaining_turn
+				cool_time(res_data);
+						
+				$('#main_ch_hp').html('hp: '+ res_data.main_ch.c_hp);
+				$('#mop_hp').html('hp: '+ res_data.mop.m_hp);
 				
 				//스탯
-				$('#main_ch_ad').html('ad: '+ res_data.main_ch_ad);
-				$('#main_ch_ap').html('ap: '+ res_data.main_ch_ap);
-				$('#main_ch_armor').html('armor: '+ res_data.main_ch_armor+"(피해감소 "+ Math.round(100-5000/(res_data.main_ch_armor+50)) +"%)");
-				$('#main_ch_critical').html('critical: '+ res_data.main_ch_critical);
-				$('#main_ch_avd').html('avd: '+ res_data.main_ch_avd);
+				$('#main_ch_ad').html('ad: '+ res_data.main_ch.c_ad);
+				$('#main_ch_ap').html('ap: '+ res_data.main_ch.c_ap);
+				$('#main_ch_armor').html('armor: '+ res_data.main_ch.c_armor+"(피해감소 "+ Math.round(100-5000/(res_data.main_ch.c_armor+50)) +"%)");
+				$('#main_ch_critical').html('critical: '+ res_data.main_ch.c_critical);
+				$('#main_ch_avd').html('avd: '+ res_data.main_ch.c_avd);
 				
-				$('#mop_ad').html('ad: '+ res_data.mop_ad);
-				$('#mop_armor').html('armor: '+ res_data.mop_armor);
+				$('#mop_ad').html('ad: '+ res_data.mop.m_ad);
+				$('#mop_armor').html('armor: '+ res_data.mop.m_armor);
 				
 				var content = $("#txt").val();
-				content = content  + res_data.attack_mop_info + "\n"
-											+	res_data.attack_main_ch_info + "\n";
+				content = content  + res_data.attack_mop_vo.battle_info + "\n"
+											+	res_data.attack_main_ch_vo.battle_info + "\n";
 				$("#txt").html(content); 
 				
-				if(typeof res_data.extra_skill_main_ch != "undefined"){
+				if(res_data.extra_skill_main_ch != ""){
 					$("#txt").css("color", "red");
 					var content2 = $("#txt").val();
 					content2 = content2  + res_data.extra_skill_main_ch + "\n"
@@ -88,7 +90,7 @@
 					$("#txt").css("color", "black");
 				}
 				
-				if(typeof res_data.extra_skill_mop != "undefined"){
+				if(res_data.extra_skill_mop != ""){
 					$("#txt").css("color", "red");
 					var content3 = $("#txt").val();
 					content3 = content3  + res_data.extra_skill_mop + "\n"
@@ -100,9 +102,9 @@
 				content0 = content0  + "--------------------------------------------------------------\n";
 				$("#txt").html(content0); 
 				
-				if(res_data.mop_hp<=0)
+				if(res_data.mop.m_hp<=0)
 					next_stage();
-				else if(res_data.main_ch_hp<=0)
+				else if(res_data.main_ch.c_hp<=0)
 					previous_shop();
 			}
 		});
@@ -135,6 +137,27 @@
 		}) 
 	}
 	
+	function cool_time(res_data){
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[0]-1 }]!=0)
+			$($("#character > li > button").get(0)).attr("disabled", true);
+		else
+			$($("#character > li > button").get(0)).attr("disabled", false);
+		
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[1]-1 }]!=0)
+			$($("#character > li > button").get(1)).attr("disabled", true);
+		else
+			$($("#character > li > button").get(1)).attr("disabled", false);
+		
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[2]-1 }]!=0)
+			$($("#character > li > button").get(2)).attr("disabled", true);
+		else
+			$($("#character > li > button").get(2)).attr("disabled", false);
+		
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[3]-1 }]!=0)
+			$($("#character > li > button").get(3)).attr("disabled", true);
+		else
+			$($("#character > li > button").get(3)).attr("disabled", false);
+	}
 </script>
 </head>
 <body>
@@ -154,11 +177,11 @@
       <li>auto_attack: ${ main_ch.c_auto_attack }</li>
       <li>p_skill: ${ main_ch.c_p_skill }</li>
       
-      
-      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[0] - 1].s_idx });">a_skill1: ${ main_ch.skill_vo[s_idx[0] - 1].s_name }</button></li>
-      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[1] - 1].s_idx });">a_skill2: ${ main_ch.skill_vo[s_idx[1] - 1].s_name }</button></li>
-      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[2] - 1].s_idx });">a_skill3: ${ main_ch.skill_vo[s_idx[2] - 1].s_name }</button></li>
-      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[3] - 1].s_idx });">a_skill4: ${ main_ch.skill_vo[s_idx[3] - 1].s_name }</button></li>
+      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[0] - 1].s_idx });" >a_skill1: ${ main_ch.skill_vo[s_idx[0] - 1].s_name }</button></li>
+      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[1] - 1].s_idx });" >a_skill2: ${ main_ch.skill_vo[s_idx[1] - 1].s_name }</button></li>
+      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[2] - 1].s_idx });" >a_skill3: ${ main_ch.skill_vo[s_idx[2] - 1].s_name }</button></li>
+	  <li><button onclick="skill(${ main_ch.skill_vo[s_idx[3] - 1].s_idx });" >a_skill4: ${ main_ch.skill_vo[s_idx[3] - 1].s_name }</button></li>
+
 	</ul>
 	
 	<div id="text_box">

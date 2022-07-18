@@ -89,7 +89,7 @@ public class CharacterController {
 		
 		application.setAttribute("main_ch", main_ch);
 		model.addAttribute("stage_val", 1);
-				
+		
 		return "redirect:../shop/shop.do";
 	}
 

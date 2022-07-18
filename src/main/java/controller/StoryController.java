@@ -33,7 +33,7 @@ public class StoryController {
 	@RequestMapping("story_beginning.do")
 	public String story_beginning() {
 		
-		System.out.println("stroy_beginning.do 호출 성공!");
+		//System.out.println("stroy_beginning.do 호출 성공!");
 		return "game/story/story_beginning";
 	}
 	

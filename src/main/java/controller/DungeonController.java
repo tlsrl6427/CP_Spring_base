@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,14 +71,33 @@ public class DungeonController {
 	}
 
 	@RequestMapping("dungeon.do")
-	public String dungeon(Model model, int stage_val, int[] s_idx) {
+	public String dungeon(Model model, int stage_val, int[] s_idx, int[] s_val, int[] s_num) {
 
 		// 캐릭터 정보랑 스킬 둘 다 넘겨야 됨
 		// 스킬 mapper 만들고 s_idx 이용해서 캐릭터 정보 1개(application에 저장되어서 걍 넘기면 딤)
 		// 넘어온 s_idx 4개로 선택된 스킬 이름만 main_ch에 넘겨서 jsp에서 출력
 		// 몹 관한 정보는 db 구현 후 작성
-	
-		CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
+
+		List<Integer> list = new ArrayList<>();
+	      
+	      // shop.jsp에서 조잡하게 가져와서 맨 뒤에서부터 8개가 전체 찍은 스킬에 대한 값
+	      for (int i = s_val.length - 8; i < s_val.length; i++) {
+	         list.add(s_val[i]);
+	      }
+	      
+	      int [] arr = new int[8];
+	      int size = 0;
+	      
+	      for (Integer temp : list) {
+	         arr[size++] = temp;
+	      }
+	      
+	      CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
+	      
+	      for (int i = 0; i < 8; i++) {
+	         main_ch.setActive_skill_level(arr);
+	      }
+		
 		MopVo mop = new MopVo();
 		//아이템 적용
 //		System.out.println("--------------적용전---------------");

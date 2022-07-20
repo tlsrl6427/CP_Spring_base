@@ -38,8 +38,7 @@
 	</beans:bean>
 	
 	<beans:bean class="controller.ShopController">
-		<!-- <beans:property name="shop_dao" ref = "shop_dao"></beans:property> -->
-		<!-- <beans:property name="item_dao" ref = "item_dao"></beans:property> -->
+		<beans:property name="item_dao" ref = "item_dao"></beans:property>
 	</beans:bean>
 	
 	<beans:bean class="controller.UserController">

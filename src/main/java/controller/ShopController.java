@@ -39,19 +39,12 @@ public class ShopController {
 	HttpSession session;
 	
 	@Autowired
-	ShopDao shop_dao;
-	
-	@Autowired
 	CharacterDao character_dao;
 
 	ItemDao item_dao;
 	
 	public void setItem_dao(ItemDao item_dao) {
 		this.item_dao = item_dao;
-	}
-
-	public void setShop_dao(ShopDao shop_dao) {
-		this.shop_dao = shop_dao;
 	}
 
 	@RequestMapping("shop.do")
@@ -89,12 +82,12 @@ public class ShopController {
 		
 		application.setAttribute("selected_item_list", selected_item_list);
 		model.addAttribute("selected_item_list", selected_item_list);
-		return "game/shop/shop_test";
+		return "game/shop/shop_test_shingi";
 	}
 
-	@RequestMapping(value="item_buy.do", produces="text/json; charset=utf-8;")
+	@RequestMapping(value="item_buy.do")
 	@ResponseBody
-	public String item_buy(int i_idx) {
+	public ItemVo item_buy(int i_idx) {
 		
 //		System.out.println("item_name: "+vo.getI_name());
 //		System.out.println("item_class: "+vo.getI_class());
@@ -115,10 +108,7 @@ public class ShopController {
 		
 		application.setAttribute("main_ch", main_ch);
 		
-		JSONObject json = new JSONObject();
-		json.put("item_name", selected_item.getI_name());
-		
-		return json.toJSONString();
+		return selected_item;
 	}
 	
 	@RequestMapping(value="item_shuffle.do")

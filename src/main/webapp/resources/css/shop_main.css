@@ -85,32 +85,29 @@ table{
 }
 
 #random_items{
-	width: 50%;
-	height:50%;
+	width: 300px;
+	height: 477px;
 	text-align: center;
 	float: right;
-	margin-top: 80px;
+	margin-top: 10px;
+	margin-right: 70px;
+}
+
+#random_back{
+	width: 300px;
+	height: 477px;
 }
 
 #random1{
-	width: 150px;
-	height: 150px;
-}
-
-#random2{
-	width: 150px;
-	height: 150px;
-}
-
-#random3{
-	width: 150px;
-	height: 150px;
+	
+	margin-top: 100px;
+	
 }
 
 #inventory{
 	height: 30px;
 	width: 30px;
-	
+	background-image: url("shop_back.png");
 }
 
 #clear{

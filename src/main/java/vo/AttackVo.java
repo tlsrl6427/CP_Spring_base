@@ -16,6 +16,7 @@ public class AttackVo {
 	int cc_turn;
 	String cc_name;
 	String battle_info;
+	String battle_info_p;
 	
 	public String getBattle_info() {
 		return battle_info;
@@ -101,7 +102,11 @@ public class AttackVo {
 	public void setCc_name(String cc_name) {
 		this.cc_name = cc_name;
 	}
-	
-	
+	public String getBattle_info_p() {
+		return battle_info_p;
+	}
+	public void setBattle_info_p(String battle_info_p) {
+		this.battle_info_p = battle_info_p;
+	}
 	
 }

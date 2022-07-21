@@ -8,6 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Insert title here</title>
 <style>
+
 	#character{
 		float: left;
 	}
@@ -15,12 +16,15 @@
 	#mop{
 		float: right;
 	}
+	
 	#btns{
 		clear: both;
 	}
+	
 	#text_box{
 		float: left;
 	}
+	
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -58,7 +62,7 @@
 	function skill(s_idx){
 		$.ajax({
 			url: 'game/dungeon/battle/attack.do',
-			data: {'s_idx': s_idx},
+			data: {'s_idx': s_idx, "original_hp": ${ original_hp }},
 			success: function(res_data){
 				//res_data.main_ch.active_skill_remaining_turn
 				cool_time(res_data);
@@ -77,11 +81,23 @@
 				$('#mop_armor').html('armor: '+ res_data.mop.m_armor);
 				
 				var content = $("#txt").val();
-				content = content  + res_data.attack_mop_vo.battle_info + "\n"
-											+	res_data.attack_main_ch_vo.battle_info + "\n";
-				$("#txt").html(content); 
+
+
+				if (res_data.extra_skill_mop == "cc") {
+					content = content +	"몬스터가 상태 이상에 걸려 아무 행동도 할 수 없습니다." + "\n" 
+				     		 + res_data.attack_mop_vo.battle_info + "\n";
+					$("#txt").html(content); 
+				} else {
+					content = content +	res_data.attack_main_ch_vo.battle_info + "\n" 
+								      + res_data.attack_mop_vo.battle_info + "\n";
+					if (res_data.attack_mop_vo.battle_info_p != null){
+						content += res_data.attack_mop_vo.battle_info_p + "\n";
+					}
+					
+					$("#txt").html(content); 
+				}
 				
-				if(res_data.extra_skill_main_ch != ""){
+				/* if(res_data.extra_skill_main_ch != ""){
 					$("#txt").css("color", "red");
 					var content2 = $("#txt").val();
 					content2 = content2  + res_data.extra_skill_main_ch + "\n"
@@ -97,7 +113,8 @@
 					$("#txt").html(content3); 
 					
 					$("#txt").css("color", "black");
-				}
+				} */
+				
 				var content0 = $("#txt").val();
 				content0 = content0  + "--------------------------------------------------------------\n";
 				$("#txt").html(content0); 
@@ -138,22 +155,22 @@
 	}
 	
 	function cool_time(res_data){
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[0]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[0]-1 }]!=0)
 			$($("#character > li > button").get(0)).attr("disabled", true);
 		else
 			$($("#character > li > button").get(0)).attr("disabled", false);
 		
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[1]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[1]-1 }]!=0)
 			$($("#character > li > button").get(1)).attr("disabled", true);
 		else
 			$($("#character > li > button").get(1)).attr("disabled", false);
 		
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[2]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[2]-1 }]!=0)
 			$($("#character > li > button").get(2)).attr("disabled", true);
 		else
 			$($("#character > li > button").get(2)).attr("disabled", false);
 		
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[3]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[3]-1 }]!=0)
 			$($("#character > li > button").get(3)).attr("disabled", true);
 		else
 			$($("#character > li > button").get(3)).attr("disabled", false);
@@ -177,10 +194,10 @@
       <li>auto_attack: ${ main_ch.c_auto_attack }</li>
       <li>p_skill: ${ main_ch.c_p_skill }</li>
       
-      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[0] - 1].s_idx });" >a_skill1: ${ main_ch.skill_vo[s_idx[0] - 1].s_name }</button></li>
-      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[1] - 1].s_idx });" >a_skill2: ${ main_ch.skill_vo[s_idx[1] - 1].s_name }</button></li>
-      <li><button onclick="skill(${ main_ch.skill_vo[s_idx[2] - 1].s_idx });" >a_skill3: ${ main_ch.skill_vo[s_idx[2] - 1].s_name }</button></li>
-	  <li><button onclick="skill(${ main_ch.skill_vo[s_idx[3] - 1].s_idx });" >a_skill4: ${ main_ch.skill_vo[s_idx[3] - 1].s_name }</button></li>
+      <li><button onclick="skill(${ s_idx[0] });" >a_skill1: ${ main_ch.skill_vo[s_num[0] - 1].s_name }</button></li>
+      <li><button onclick="skill(${ s_idx[1] });" >a_skill2: ${ main_ch.skill_vo[s_num[1] - 1].s_name }</button></li>
+      <li><button onclick="skill(${ s_idx[2] });" >a_skill3: ${ main_ch.skill_vo[s_num[2] - 1].s_name }</button></li>
+	  <li><button onclick="skill(${ s_idx[3] });" >a_skill4: ${ main_ch.skill_vo[s_num[3] - 1].s_name }</button></li>
 
 	</ul>
 	

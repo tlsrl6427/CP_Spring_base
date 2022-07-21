@@ -37,6 +37,7 @@ var s_val = [];
       });
 
       console.log(s_num);
+      console.log(s_idx);
       
       jQuery.ajaxSettings.traditional = true;   // 이거 추가 안 하면 parameter 넘어갈 때 %5B%5D가 추가되어서 넘어감
       $.ajax({

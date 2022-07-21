@@ -145,6 +145,8 @@ public class ShopController {
 			selected_item_list = ItemEffect.effect_to_item(item_list, stage_num);
 		}
 		
+		
+		
 		application.setAttribute("selected_item_list", selected_item_list);
 		
 		return selected_item_list;

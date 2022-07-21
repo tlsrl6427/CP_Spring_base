@@ -53,6 +53,7 @@ public class ItemEffect {
 				//보조스탯(회피율, 체력%, 방어력%) +
 				random.setSeed(System.currentTimeMillis());
 				int random_effect  = random.nextInt(3)+1;
+				//System.out.println("랜덤수: " + random_effect);
 				random.setSeed(System.currentTimeMillis());
 				if(random_effect==1) {
 					int avd_increase = random.nextInt(3)+1 + stage_num * 5;
@@ -60,7 +61,7 @@ public class ItemEffect {
 				}else if(random_effect==2) {
 					int hp_percent_increase = random.nextInt(5)+1 + stage_num * 5;
 					item_list.get(random_item[i]).setI_hp_percent(hp_percent_increase);
-				}else if(random_effect==3) {
+				}else{
 					int armor_percent_increase = random.nextInt(5)+1 + stage_num * 5;
 					item_list.get(random_item[i]).setI_armor_percent(armor_percent_increase);
 				}
@@ -88,7 +89,7 @@ public class ItemEffect {
 				}else if(random_effect==2) {
 					int hp_percent_increase = random.nextInt(4) + stage_num * 5;
 					item_list.get(random_item[i]).setI_hp_percent(hp_percent_increase);
-				}else if(random_effect==3) {
+				}else{
 					int armor_percent_increase = random.nextInt(4) + stage_num * 5;
 					item_list.get(random_item[i]).setI_armor_percent(armor_percent_increase);
 				}

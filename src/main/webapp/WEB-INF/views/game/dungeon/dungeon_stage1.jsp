@@ -234,7 +234,7 @@
 						</div>
 					</div>
 					<div id="mop_hp">hp: ${ mop.m_hp }</div>
-					<img id="warrior1" src="${ pageContext.request.contextPath }/resources/img/magician.png">
+					<img id="warrior1" src="${ pageContext.request.contextPath }/resources/img/wizard.png">
 	            </div>
             </div>
             

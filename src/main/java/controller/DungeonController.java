@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.CharacterDao;
@@ -63,7 +64,7 @@ public class DungeonController {
 	}
 
 	@RequestMapping("dungeon.do")
-	public String dungeon(Model model, int stage_val, int[] s_idx) {
+	public String dungeon(Model model, @RequestParam(value ="stage_val", defaultValue = "1") int stage_val, int[] s_idx) {
 
 		// 캐릭터 정보랑 스킬 둘 다 넘겨야 됨
 		// 스킬 mapper 만들고 s_idx 이용해서 캐릭터 정보 1개(application에 저장되어서 걍 넘기면 딤)

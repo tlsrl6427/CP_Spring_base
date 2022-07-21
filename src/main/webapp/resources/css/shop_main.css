@@ -59,17 +59,17 @@ table{
 
 #skill_no{
 	
-	margin-left: 10px;	
+	margin-left: 7px;	
 }
 
 #skill_left{
-	margin-left: 15px;
+	margin-left: 10px;
 	float: left;
 	text-align: left;
 }
 
 #skill_right{
-	margin-right:15px;
+	margin-right:10px;
 	float: right;
 	text-align: left;
 }

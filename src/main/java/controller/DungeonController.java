@@ -5,12 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.json.simple.JSONObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +26,6 @@ import info.character.Warrior;
 import info.character.Wizard;
 import vo.AttackVo;
 import vo.CharacterVo;
-import vo.DungeonVo;
-import vo.ItemVo;
 import vo.MopVo;
 import vo.SkillVo;
 
@@ -57,7 +53,7 @@ public class DungeonController {
 	SkillDao skill_dao;
 
 	MopDao mop_dao;
-	
+
 	public void setDungeon_dao(DungeonDao dungeon_dao) {
 		this.dungeon_dao = dungeon_dao;
 	}
@@ -79,27 +75,29 @@ public class DungeonController {
 		// 몹 관한 정보는 db 구현 후 작성
 
 		List<Integer> list = new ArrayList<>();
-	      
-	      // shop.jsp에서 조잡하게 가져와서 맨 뒤에서부터 8개가 전체 찍은 스킬에 대한 값
-	      for (int i = s_val.length - 8; i < s_val.length; i++) {
-	         list.add(s_val[i]);
-	      }
-	      
-	      int [] arr = new int[8];
-	      int size = 0;
-	      
-	      for (Integer temp : list) {
-	         arr[size++] = temp;
-	      }
-	      
-	      CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
-	      
-	      for (int i = 0; i < 8; i++) {
-	         main_ch.setActive_skill_level(arr);
-	      }
-		
+
+		// shop.jsp에서 조잡하게 가져와서 맨 뒤에서부터 8개가 전체 찍은 스킬에 대한 값
+		for (int i = s_val.length - 8; i < s_val.length; i++) {
+			list.add(s_val[i]);
+		}
+
+		int[] arr = new int[8];
+		int size = 0;
+
+		for (Integer temp : list) {
+			arr[size++] = temp;
+		}
+
+		CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
+
+		for (int i = 0; i < 8; i++) {
+			main_ch.setActive_skill_level(arr);
+		}
+
+		List<SkillVo> skill_list = new ArrayList<>();
+
 		MopVo mop = new MopVo();
-		//아이템 적용
+		// 아이템 적용
 //		System.out.println("--------------적용전---------------");
 //		System.out.println("main_ch_hp: " + main_ch.getC_hp());
 //		System.out.println("main_ch_armor: " + main_ch.getC_armor());
@@ -111,9 +109,9 @@ public class DungeonController {
 		main_ch.item_percent_apply();
 //		System.out.println("main_ch_hp: " + main_ch.getC_hp());
 //		System.out.println("main_ch_armor: " + main_ch.getC_armor());
-		//mop = mop_dao.selectOne(stage_val);
+		// mop = mop_dao.selectOne(stage_val);
 		///////////////////////////////////////
-		//실험용 몹 정보
+		// 실험용 몹 정보
 		mop.setM_idx(1);
 		mop.setM_name("몬스터1");
 		mop.setM_level("일반");
@@ -122,14 +120,14 @@ public class DungeonController {
 		mop.setM_armor(0);
 		mop.setM_skill("몹 스킬");
 		///////////////////////////////////////
-		
-		//*main_ch를 복사한 객체를 addAttribute 해야될듯
+
+		// *main_ch를 복사한 객체를 addAttribute 해야될듯
 		CharacterVo copy_main_ch = null;
-		if(main_ch.getC_idx()==1) {//전사일때
+		if (main_ch.getC_idx() == 1) {// 전사일때
 			copy_main_ch = new Warrior();
-		}else if(main_ch.getC_idx()==2){//궁수일때
+		} else if (main_ch.getC_idx() == 2) {// 궁수일때
 			copy_main_ch = new Archer();
-		}else {//법사일때
+		} else {// 법사일때
 			copy_main_ch = new Wizard();
 		}
 		BeanUtils.copyProperties(main_ch, copy_main_ch);
@@ -141,44 +139,56 @@ public class DungeonController {
 //		System.out.println("armor: " + copy_main_ch.getC_armor());
 //		System.out.println("critical: " + copy_main_ch.getC_critical());
 //		System.out.println("avd: " + copy_main_ch.getC_avd());
+
+		// copy_main_ch에 가져온 스킬 4개 레벨, 턴 적용
 		
-		//copy_main_ch에 가져온 스킬 4개 레벨, 턴 적용
-		
+		int original_hp = main_ch.getC_hp();
+		int original_critical = main_ch.getC_critical();
+
 		application.setAttribute("mop", mop);
 		application.setAttribute("main_ch", main_ch);
 		application.setAttribute("copy_main_ch", copy_main_ch);
 		application.setAttribute("s_idx", s_idx);
+		application.setAttribute("s_num", s_num);
+		application.setAttribute("original_hp", original_hp);
+		application.setAttribute("original_critical", original_critical);
 		
+
 		model.addAttribute("mop", mop);
 		model.addAttribute("main_ch", copy_main_ch);
 		model.addAttribute("s_idx", s_idx);
-		
-		return "game/dungeon/dungeon_stage1";
+		model.addAttribute("s_num", s_num);
+		model.addAttribute("original_hp", original_hp);
+		model.addAttribute("original_critical", original_critical);
+
+		return "game/dungeon/dungeon_test";
 	}
 
-	@RequestMapping(value="battle/attack.do")
+	@RequestMapping(value = "battle/attack.do")
 	@ResponseBody
-	public Map battle_attack(int s_idx) {
+	public Map battle_attack(int s_idx, int original_hp) {
 
 		CharacterVo main_ch = (CharacterVo) application.getAttribute("copy_main_ch");
 		MopVo mop = (MopVo) application.getAttribute("mop");
 		AttackVo attack_mop_vo = new AttackVo();
 		AttackVo attack_main_ch_vo = new AttackVo();
 		
-		//몬스터에게 cc, 도트뎀, 디버프 적용하기, 스킬 쿨 줄이기////////////
+		// 몬스터에게 cc, 도트뎀, 디버프 적용하기, 스킬 쿨 줄이기////////////
 		String extra_skill_mop = mop.extra_skill();
 		String extra_skill_main_ch = main_ch.extra_skill();
 		
-		if(!extra_skill_mop.equals("cc")) {
-			//캐릭터에게 피해 입히기
+		//System.out.printf("%s %d", "기존 체력: ", original_hp);
+
+		if (!extra_skill_mop.equals("cc")) {
+			// 캐릭터에게 피해 입히기
 			mop.attack_character(main_ch, attack_main_ch_vo);
 		}
-		
-		if(!extra_skill_main_ch.equals("cc")) {
-			//몬스터에게 피해 입히기
-			main_ch.attack_mop(mop, attack_mop_vo, s_idx);
+
+		if (!extra_skill_main_ch.equals("cc")) {
+			// 몬스터에게 피해 입히기
+			main_ch.attack_mop(main_ch, mop, attack_mop_vo, s_idx, original_hp);
 		}
-		
+
 		application.setAttribute("copy_main_ch", main_ch);
 		application.setAttribute("mop", mop);
 
@@ -197,7 +207,7 @@ public class DungeonController {
 //		System.out.println("cc_turn: " + attack_mop_vo.getCc_turn());
 //		System.out.println("cc_name: " + attack_mop_vo.getCc_name());
 //		System.out.println("battle_info: " + attack_mop_vo.getBattle_info());
-		
+
 //		System.out.println("-----------AttackMainChVo------------");
 //		System.out.println("damage: " + attack_main_ch_vo.getDamage());
 //		System.out.println("self_damage: " + attack_main_ch_vo.getSelf_damage());
@@ -212,7 +222,7 @@ public class DungeonController {
 //		System.out.println("cc_turn: " + attack_main_ch_vo.getCc_turn());
 //		System.out.println("cc_name: " + attack_main_ch_vo.getCc_name());
 //		System.out.println("battle_info: " + attack_main_ch_vo.getBattle_info());
-		
+
 //		System.out.println("-----------CharacterVo------------");
 //		System.out.println("hp: " + main_ch.getC_hp());
 //		System.out.println("name: " + main_ch.getC_name());
@@ -221,19 +231,19 @@ public class DungeonController {
 //		System.out.println("armor: " + main_ch.getC_armor());
 //		System.out.println("critical: " + main_ch.getC_critical());
 //		System.out.println("avd: " + main_ch.getC_avd());
-		
+
 //		System.out.println("-----------MopVo------------");
 //		System.out.println("name: " + mop.getM_name());
 //		System.out.println("hp: " + mop.getM_hp());
 //		System.out.println("ad: " + mop.getM_ad());
 //		System.out.println("armor: " + mop.getM_armor());
 //		System.out.println("level: " + mop.getM_level());
-		
+
 //		json.put("main_ch", main_ch);
 //		json.put("mop1", mop1);
 //		json.put("attack_info", attack_mop_vo);
-		
-		//Map으로 정보 보내기
+
+		// Map으로 정보 보내기
 		Map map = new HashMap();
 		map.put("main_ch", main_ch);
 		map.put("mop", mop);
@@ -241,7 +251,7 @@ public class DungeonController {
 		map.put("attack_main_ch_vo", attack_main_ch_vo);
 		map.put("extra_skill_main_ch", extra_skill_main_ch);
 		map.put("extra_skill_mop", extra_skill_mop);
-		
+
 		return map;
 	}
 

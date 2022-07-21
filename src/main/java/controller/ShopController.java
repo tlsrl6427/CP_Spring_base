@@ -82,7 +82,7 @@ public class ShopController {
 		
 		application.setAttribute("selected_item_list", selected_item_list);
 		model.addAttribute("selected_item_list", selected_item_list);
-		return "game/shop/shop_test_shingi";
+		return "game/shop/shop";
 	}
 
 	@RequestMapping(value="item_buy.do")

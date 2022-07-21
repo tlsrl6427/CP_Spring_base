@@ -153,7 +153,7 @@ public class DungeonController {
 		model.addAttribute("main_ch", copy_main_ch);
 		model.addAttribute("s_idx", s_idx);
 		
-		return "game/dungeon/dungeon_test";
+		return "game/dungeon/dungeon_test_shingi";
 	}
 
 	@RequestMapping(value="battle/attack.do")

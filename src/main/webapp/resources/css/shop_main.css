@@ -59,17 +59,29 @@ table{
 
 #skill_no{
 	
-	margin-right: 30px;
+	margin-left: 10px;	
 }
 
-#skill, #skill_l{
-	margin-right: 10px;
-	margin-left: 5px;
+#skill_left{
+	margin-left: 15px;
+	float: left;
+	text-align: left;
 }
 
-#skill_l{
+#skill_right{
+	margin-right:15px;
+	float: right;
+	text-align: left;
+}
+
+#btn_up{
 	
-	margin-left: 35px; 
+	clear: both;
+}
+
+#skill{
+	
+	margin-right: 10px;
 }
 
 #random_items{

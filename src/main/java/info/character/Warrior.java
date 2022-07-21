@@ -9,7 +9,7 @@ import vo.SkillVo;
 
 public class Warrior extends CharacterVo{
 
-	
+	boolean flag = true;
 	
 	public void active_skill1(MopVo mopVo, AttackVo attack_mop_vo) {
 		//어스 브레이크 10(1.5ad)
@@ -139,5 +139,15 @@ public class Warrior extends CharacterVo{
 																		attack_mop_vo.getName(),
 																		mopVo.getM_name(),
 																		armor_reduced));
+	}
+	
+	public void passive_skill1(int original_hp) {
+		// 피가 30%이하로 떨어지면 방어력이 1.5배 증가합니다.
+		
+		// 30% 이하로 떨어지면 매번 방어력이 1.5배 증가하는 것이 아닌, 스테이지당 딱 한 번만 기본 방어에 1.5배 수치 적용
+		if (((int) (((double)this.getC_hp()) / (double)original_hp * 100) < 30) && flag) {
+			this.setC_armor((int)(this.getC_armor() * 1.5));
+			flag = false;
+		}
 	}
 }

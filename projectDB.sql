@@ -32,10 +32,10 @@ alter table character_info add column c_img varchar(255)
 
 create table skill
 (
-	s_idx				int auto_increment,				-- Skill Index	(*pk)
-	s_name				varchar(30),					-- Skill Name
+	s_idx				int auto_increment,					-- Skill Index	(*pk)
+	s_name				varchar(30),						-- Skill Name
 	s_num				int,								-- Skill Num(몇번째 스킬인지)
-	s_category			varchar(30),					-- Skill Category('damage', 'buff', 'cc', 'debuff', 'dot')
+	s_category			varchar(30),						-- Skill Category('damage', 'buff', 'cc', 'debuff', 'dot')
 	s_turn				int,								-- Skill Turn(쿨타임)
 	s_valid				int,								-- Skill Valid(스킬이 적용되는 턴수; 즉발데미지류 0)
 	c_idx				int,								-- Character Index(*fk)	

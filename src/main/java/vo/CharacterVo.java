@@ -2,7 +2,6 @@ package vo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CharacterVo implements Cloneable{
 
@@ -16,7 +15,7 @@ public class CharacterVo implements Cloneable{
 	int 	c_avd;
 	String	c_auto_attack;
 	String 	c_p_skill;
-	String c_img;
+	String  c_img;
 	
 	int c_hp_percent;
 	int c_ad_percent;
@@ -53,22 +52,32 @@ public class CharacterVo implements Cloneable{
 	public void active_skill6(MopVo mopVo, AttackVo attack_mop_vo) {}
 	public void active_skill7(MopVo mopVo, AttackVo attack_mop_vo) {}
 	public void active_skill8(MopVo mopVo, AttackVo attack_mop_vo) {}
+	public void passive_skill1(int original_hp) {}
+	
 	
 	//몬스터에게 데미지 입히기
-	public void attack_mop(MopVo mopVo, AttackVo attack_mop_vo, int s_idx) {
-	
-		if(s_idx==0) {
+	public void attack_mop(CharacterVo main_ch, MopVo mopVo, AttackVo attack_mop_vo, int s_idx, int original_hp) {
+		
+		if(s_idx == 0) {
 			attack_mop_vo.setDamage(this.c_ad * (5000 / ( 50 + mopVo.getM_armor() ) ) / 100);
 			mopVo.setM_hp(mopVo.getM_hp() - this.c_ad * (5000 / ( 50 + mopVo.getM_armor() ) ) / 100);
 			attack_mop_vo.setBattle_info(String.format("%s(이)가 %s에게 %d의 피해를 입혔습니다.", 
-																				this.getC_name(),
-																				mopVo.getM_name(),
-																				this.c_ad * (5000 / ( 50 + mopVo.getM_armor() ) ) / 100));
-		}else {
+													   this.getC_name(),
+													   mopVo.getM_name(),
+													   this.c_ad * (5000 / ( 50 + mopVo.getM_armor() ) ) / 100));
+		} else {
+			
 			SkillVo vo = getSkill_s_idx(s_idx);
 			attack_mop_vo.setName(vo.getS_name());
 			//쿨 다시 늘리기
 			active_skill_remaining_turn[vo.getS_num()-1] = vo.getS_turn();
+			
+			// 패시브 스킬 구현
+			switch(main_ch.getC_idx()) {
+				case 1: passive_skill1(original_hp);
+				//case 3: passive_skill3();
+			}
+			
 			switch(vo.getS_num()) {
 				case 1: active_skill1(mopVo, attack_mop_vo); break;
 				case 2: active_skill2(mopVo, attack_mop_vo); break;
@@ -80,6 +89,9 @@ public class CharacterVo implements Cloneable{
 				case 8: active_skill8(mopVo, attack_mop_vo); break;
 				default: break;
 			}
+			
+			// 법사 패시브 구현 부분
+			
 		}
 	}
 	
@@ -339,6 +351,10 @@ public class CharacterVo implements Cloneable{
 	}
 	public void setC_p_skill(String c_p_skill) {
 		this.c_p_skill = c_p_skill;
+	}
+	public void passive_skill2() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

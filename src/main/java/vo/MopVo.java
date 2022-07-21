@@ -1,7 +1,5 @@
 package vo;
 
-import java.util.Map;
-
 public class MopVo {
 
 	int 	m_idx;
@@ -24,6 +22,7 @@ public class MopVo {
 //	int frozen_cc_turn = 0;// 프로즌 cc기 걸린 턴수
 //	
 	public void attack_character(CharacterVo main_ch, AttackVo attack_main_ch_vo) {
+		
 		attack_main_ch_vo.setDamage(this.m_ad * (5000 / ( 50 + main_ch.getC_armor() ) ) / 100);
 		main_ch.setC_hp(main_ch.getC_hp() - this.m_ad * (5000 / ( 50 + main_ch.getC_armor() ) ) / 100);
 		attack_main_ch_vo.setBattle_info(String.format("%s(이)가 %s에게 %d의 피해를 입혔습니다.", 
@@ -33,11 +32,19 @@ public class MopVo {
 	}
 
 	public String extra_skill() {
+		
 		String extra_battle_info = "";
 		
-		if(this.cc_turn!=0) {
+		System.out.println(this.cc_turn);
+		
+		if(this.cc_turn > 0) {
 			this.cc_turn--;
-			return "cc";
+			
+			if (this.cc_turn == 0) {
+				return "";
+			} else {
+				return "cc";
+			}
 		}
 		
 		if(this.dot_damage_turn!=0) {

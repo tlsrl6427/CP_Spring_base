@@ -16,6 +16,7 @@ public class CharacterVo implements Cloneable{
 	String	c_auto_attack;
 	String 	c_p_skill;
 	String  c_img;
+	int 	c_original_hp;
 	
 	int c_hp_percent;
 	int c_ad_percent;
@@ -56,7 +57,7 @@ public class CharacterVo implements Cloneable{
 	
 	
 	//몬스터에게 데미지 입히기
-	public void attack_mop(CharacterVo main_ch, MopVo mopVo, AttackVo attack_mop_vo, int s_idx, int original_hp) {
+	public void attack_mop(CharacterVo main_ch, MopVo mopVo, AttackVo attack_mop_vo, int s_idx) {
 		
 		if(s_idx == 0) {
 			attack_mop_vo.setDamage(this.c_ad * (5000 / ( 50 + mopVo.getM_armor() ) ) / 100);
@@ -74,7 +75,7 @@ public class CharacterVo implements Cloneable{
 			
 			// 패시브 스킬 구현
 			switch(main_ch.getC_idx()) {
-				case 1: passive_skill1(original_hp);
+				case 1: passive_skill1(this.getC_original_hp());
 				//case 3: passive_skill3();
 			}
 			
@@ -355,6 +356,12 @@ public class CharacterVo implements Cloneable{
 	public void passive_skill2() {
 		// TODO Auto-generated method stub
 		
+	}
+	public int getC_original_hp() {
+		return c_original_hp;
+	}
+	public void setC_original_hp(int c_original_hp) {
+		this.c_original_hp = c_original_hp;
 	}
 
 	

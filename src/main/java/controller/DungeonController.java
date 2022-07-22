@@ -142,7 +142,6 @@ public class DungeonController {
 
 		// copy_main_ch에 가져온 스킬 4개 레벨, 턴 적용
 		
-		int original_hp = main_ch.getC_hp();
 		int original_critical = main_ch.getC_critical();
 
 		application.setAttribute("mop", mop);
@@ -150,7 +149,6 @@ public class DungeonController {
 		application.setAttribute("copy_main_ch", copy_main_ch);
 		application.setAttribute("s_idx", s_idx);
 		application.setAttribute("s_num", s_num);
-		application.setAttribute("original_hp", original_hp);
 		application.setAttribute("original_critical", original_critical);
 		
 
@@ -158,15 +156,14 @@ public class DungeonController {
 		model.addAttribute("main_ch", copy_main_ch);
 		model.addAttribute("s_idx", s_idx);
 		model.addAttribute("s_num", s_num);
-		model.addAttribute("original_hp", original_hp);
 		model.addAttribute("original_critical", original_critical);
 
-		return "game/dungeon/dungeon_test";
+		return "game/dungeon/dungeon_stage_tm";
 	}
 
 	@RequestMapping(value = "battle/attack.do")
 	@ResponseBody
-	public Map battle_attack(int s_idx, int original_hp) {
+	public Map battle_attack(int s_idx) {
 
 		CharacterVo main_ch = (CharacterVo) application.getAttribute("copy_main_ch");
 		MopVo mop = (MopVo) application.getAttribute("mop");
@@ -186,7 +183,7 @@ public class DungeonController {
 
 		if (!extra_skill_main_ch.equals("cc")) {
 			// 몬스터에게 피해 입히기
-			main_ch.attack_mop(main_ch, mop, attack_mop_vo, s_idx, original_hp);
+			main_ch.attack_mop(main_ch, mop, attack_mop_vo, s_idx);
 		}
 
 		application.setAttribute("copy_main_ch", main_ch);

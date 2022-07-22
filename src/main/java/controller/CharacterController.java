@@ -57,6 +57,7 @@ public class CharacterController {
 			main_ch.setC_p_skill(ex_c_vo.getC_p_skill());
 			main_ch.setC_img(ex_c_vo.getC_img());
 			main_ch.setSkill_vo(ex_c_vo.getSkill_vo());
+			main_ch.setC_original_hp(ex_c_vo.getC_hp());
 		}else if(c_idx==2) {//궁수
 			main_ch = new Archer();
 			main_ch.setC_idx(ex_c_vo.getC_idx());
@@ -71,6 +72,7 @@ public class CharacterController {
 			main_ch.setC_p_skill(ex_c_vo.getC_p_skill());
 			main_ch.setC_img(ex_c_vo.getC_img());
 			main_ch.setSkill_vo(ex_c_vo.getSkill_vo());
+			main_ch.setC_original_hp(ex_c_vo.getC_hp());
 		}else{//법사
 			main_ch = new Wizard();
 			main_ch.setC_idx(ex_c_vo.getC_idx());
@@ -85,6 +87,7 @@ public class CharacterController {
 			main_ch.setC_p_skill(ex_c_vo.getC_p_skill());
 			main_ch.setC_img(ex_c_vo.getC_img());
 			main_ch.setSkill_vo(ex_c_vo.getSkill_vo());
+			main_ch.setC_original_hp(ex_c_vo.getC_hp());
 		}
 		
 		application.setAttribute("main_ch", main_ch);

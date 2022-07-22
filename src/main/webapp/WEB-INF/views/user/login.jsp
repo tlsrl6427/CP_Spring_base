@@ -11,7 +11,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<link rel = "stylesheet" href = "../css/login.css">
+<link rel = "stylesheet" href = "css/login.css">
 <link rel="stylesheet" type="text/css" href="../css/login_util.css">
 <link rel="stylesheet" type="text/css" href="../css/login_main.css">
 <link rel="stylesheet" type="text/css" href="../css/login_join_main.css">

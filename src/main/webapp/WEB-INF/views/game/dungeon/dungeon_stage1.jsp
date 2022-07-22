@@ -134,22 +134,22 @@
    
    function cool_time(res_data){
 	   
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[0]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[0]-1 }]!=0)
 			$($("[id='btn_skill_a']").get(0)).css('pointer-events', 'none');
 		else
 			$($("[id='btn_skill_a']").get(0)).css('pointer-events', 'auto');
 			
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[1]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[1]-1 }]!=0)
 			$($("[id='btn_skill_a']").get(1)).css('pointer-events', 'none');
 		else
 			$($("[id='btn_skill_a']").get(1)).css('pointer-events', 'auto');
 		
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[2]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[2]-1 }]!=0)
 			$($("[id='btn_skill_a']").get(2)).css('pointer-events', 'none');
 		else
 			$($("[id='btn_skill_a']").get(2)).css('pointer-events', 'auto');
 		
-		if(res_data.main_ch.active_skill_remaining_turn[${ s_idx[3]-1 }]!=0)
+		if(res_data.main_ch.active_skill_remaining_turn[${ s_num[3]-1 }]!=0)
 			$($("[id='btn_skill_a']").get(3)).css('pointer-events', 'none');
 		else
 			$($("[id='btn_skill_a']").get(3)).css('pointer-events', 'auto');
@@ -272,10 +272,10 @@
                <div id="btn_state">
                <a onclick="aa();"><img id="btn_skill1" src="${ pageContext.request.contextPath }/resources/img/general.png"></a>
                <a onclick="shop();"><img id="btn_skill2" src="${ pageContext.request.contextPath }/resources/img/shop.png"></a>
-               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_idx[0] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
-               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_idx[1] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
-               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_idx[2] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
-               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_idx[3] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
+               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_num[0] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
+               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_num[1] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
+               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_num[2] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
+               <a id="btn_skill_a"  onclick="skill(${ main_ch.skill_vo[s_num[3] - 1].s_idx });"><img id="btn_skill"  src="${ pageContext.request.contextPath }/resources/img/skill1.png"></a>
                </div>
             </div>
          </div>

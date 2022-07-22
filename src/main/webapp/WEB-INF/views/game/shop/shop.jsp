@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -245,6 +245,7 @@ var s_val = [];
 							</div>
 						</td>
 					</tr>
+<!--------------------------------------------------------------------------------------------------------------------------->
 					<tr id="inventory">
 							<c:if test="${ not empty main_ch.item_list[0].i_name }">
 								<td id="helmet" class="tooltip">${ main_ch.item_list[0].i_name }</td>
@@ -281,136 +282,136 @@ var s_val = [];
 			
 
 			<div id="random_items">
-				<div id="${ selected_item_list[0].i_idx }" class="tooltip" onclick="item_buy(this)">${ selected_item_list[0].i_name }<br>
-					<span class="tooltiptext">
-						<ul>
-							<li>${ selected_item_list[0].i_name }</li>
-							<li>${ selected_item_list[0].i_class }</li>
-							<li>${ selected_item_list[0].i_category } </li>
-							<li>${ selected_item_list[0].i_level } </li>
-							<c:if test="${ not (selected_item_list[0].i_hp eq 0)}">
-								<li>HP ${ selected_item_list[0].i_hp } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_hp_percent eq 0)}">
-								<li>HP ${ selected_item_list[0].i_hp_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_ad eq 0)}">
-								<li>공격력 ${ selected_item_list[0].i_ad } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_ad_percent eq 0)}">
-								<li>공격력 ${ selected_item_list[0].i_ad_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_ap eq 0)}">
-								<li>주문력 ${ selected_item_list[0].i_ap } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_ap_percent eq 0)}">
-								<li>주문력 ${ selected_item_list[0].i_ap_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_armor eq 0)}">
-								<li>방어력 ${ selected_item_list[0].i_armor } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_armor_percent eq 0)}">
-								<li>방어력 ${ selected_item_list[0].i_armor_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_critical eq 0)}">
-								<li>크리티컬 ${ selected_item_list[0].i_critical }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[0].i_avd eq 0)}">
-								<li>회피율 ${ selected_item_list[0].i_avd }% 증가</li>
-							</c:if>
-						</ul>
-					</span>
+				<div id="random_back" style="background-image: url('resources/img/shop_back.png');">
+					<div id="ramdom1">
+					<br><br><br><br><br>
+						<div id="${ selected_item_list[0].i_idx }" class="tooltip" onclick="item_buy(this)">${ selected_item_list[0].i_name }<br>
+							<span class="tooltiptext">
+								<ul>
+									<li>${ selected_item_list[0].i_name }</li>
+									<li>${ selected_item_list[0].i_class }</li>
+									<li>${ selected_item_list[0].i_category } </li>
+									<li>${ selected_item_list[0].i_level } </li>
+									<c:if test="${ not (selected_item_list[0].i_hp eq 0)}">
+										<li>HP ${ selected_item_list[0].i_hp } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_hp_percent eq 0)}">
+										<li>HP ${ selected_item_list[0].i_hp_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_ad eq 0)}">
+										<li>공격력 ${ selected_item_list[0].i_ad } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_ad_percent eq 0)}">
+										<li>공격력 ${ selected_item_list[0].i_ad_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_ap eq 0)}">
+										<li>주문력 ${ selected_item_list[0].i_ap } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_ap_percent eq 0)}">
+										<li>주문력 ${ selected_item_list[0].i_ap_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_armor eq 0)}">
+										<li>방어력 ${ selected_item_list[0].i_armor } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_armor_percent eq 0)}">
+										<li>방어력 ${ selected_item_list[0].i_armor_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_critical eq 0)}">
+										<li>크리티컬 ${ selected_item_list[0].i_critical }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[0].i_avd eq 0)}">
+										<li>회피율 ${ selected_item_list[0].i_avd }% 증가</li>
+									</c:if>
+								</ul>
+							</span>
+						</div>
+						<div id="${ selected_item_list[1].i_idx }"  class="tooltip" onclick="item_buy(this)">${ selected_item_list[1].i_name }<br>
+							<span class="tooltiptext">
+								<ul>
+									<li>${ selected_item_list[1].i_name }</li>
+									<li>${ selected_item_list[1].i_class }</li>
+									<li>${ selected_item_list[1].i_category } </li>
+									<li>${ selected_item_list[1].i_level } </li>
+									<c:if test="${ not (selected_item_list[1].i_hp eq 0)}">
+										<li>HP ${ selected_item_list[1].i_hp } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_hp_percent eq 0)}">
+										<li>HP ${ selected_item_list[1].i_hp_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_ad eq 0)}">
+										<li>공격력 ${ selected_item_list[1].i_ad } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_ad_percent eq 0)}">
+										<li>공격력 ${ selected_item_list[1].i_ad_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_ap eq 0)}">
+										<li>주문력 ${ selected_item_list[1].i_ap } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_ap_percent eq 0)}">
+										<li>주문력 ${ selected_item_list[1].i_ap_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_armor eq 0)}">
+										<li>방어력 ${ selected_item_list[1].i_armor } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_armor_percent eq 0)}">
+										<li>방어력 ${ selected_item_list[1].i_armor_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_critical eq 0)}">
+										<li>크리티컬 ${ selected_item_list[1].i_critical }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[1].i_avd eq 0)}">
+										<li>회피율 ${ selected_item_list[1].i_avd }% 증가</li>
+									</c:if>
+								</ul>
+							</span>
+						</div>
+						<div id="${ selected_item_list[2].i_idx }"  class="tooltip" onclick="item_buy(this)">${ selected_item_list[2].i_name }<br>
+							<span class="tooltiptext">
+								<ul>
+									<li>${ selected_item_list[2].i_name }</li>
+									<li>${ selected_item_list[2].i_class }</li>
+									<li>${ selected_item_list[2].i_category } </li>
+									<li>${ selected_item_list[2].i_level } </li>
+									<c:if test="${ not (selected_item_list[2].i_hp eq 0)}">
+										<li>HP ${ selected_item_list[2].i_hp } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_hp_percent eq 0)}">
+										<li>HP ${ selected_item_list[2].i_hp_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_ad eq 0)}">
+										<li>공격력 ${ selected_item_list[2].i_ad } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_ad_percent eq 0)}">
+										<li>공격력 ${ selected_item_list[2].i_ad_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_ap eq 0)}">
+										<li>주문력 ${ selected_item_list[2].i_ap } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_ap_percent eq 0)}">
+										<li>주문력 ${ selected_item_list[2].i_ap_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_armor eq 0)}">
+										<li>방어력 ${ selected_item_list[2].i_armor } 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_armor_percent eq 0)}">
+										<li>방어력 ${ selected_item_list[2].i_armor_percent }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_critical eq 0)}">
+										<li>크리티컬 ${ selected_item_list[2].i_critical }% 증가</li>
+									</c:if>
+									<c:if test="${ not (selected_item_list[2].i_avd eq 0)}">
+										<li>회피율 ${ selected_item_list[2].i_avd }% 증가</li>
+									</c:if>
+								</ul>
+							</span>
+							</div><br><br><br><br><br><br><br>
+						<input type="button" id="again" value="again(cost cookie 10)"
+																		onclick="item_shuffle();"><br>
+						<button id="next_level" onclick="dungeon();">NEXT LEVEL</button>
+					<div id="clear"></div>
 				</div>
-				<div id="${ selected_item_list[1].i_idx }"  class="tooltip" onclick="item_buy(this)">${ selected_item_list[1].i_name }<br>
-					<span class="tooltiptext">
-						<ul>
-							<li>${ selected_item_list[1].i_name }</li>
-							<li>${ selected_item_list[1].i_class }</li>
-							<li>${ selected_item_list[1].i_category } </li>
-							<li>${ selected_item_list[1].i_level } </li>
-							<c:if test="${ not (selected_item_list[1].i_hp eq 0)}">
-								<li>HP ${ selected_item_list[1].i_hp } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_hp_percent eq 0)}">
-								<li>HP ${ selected_item_list[1].i_hp_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_ad eq 0)}">
-								<li>공격력 ${ selected_item_list[1].i_ad } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_ad_percent eq 0)}">
-								<li>공격력 ${ selected_item_list[1].i_ad_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_ap eq 0)}">
-								<li>주문력 ${ selected_item_list[1].i_ap } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_ap_percent eq 0)}">
-								<li>주문력 ${ selected_item_list[1].i_ap_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_armor eq 0)}">
-								<li>방어력 ${ selected_item_list[1].i_armor } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_armor_percent eq 0)}">
-								<li>방어력 ${ selected_item_list[1].i_armor_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_critical eq 0)}">
-								<li>크리티컬 ${ selected_item_list[1].i_critical }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[1].i_avd eq 0)}">
-								<li>회피율 ${ selected_item_list[1].i_avd }% 증가</li>
-							</c:if>
-						</ul>
-					</span>
-				</div>
-				<div id="${ selected_item_list[2].i_idx }"  class="tooltip" onclick="item_buy(this)">${ selected_item_list[2].i_name }<br>
-					<span class="tooltiptext">
-						<ul>
-							<li>${ selected_item_list[2].i_name }</li>
-							<li>${ selected_item_list[2].i_class }</li>
-							<li>${ selected_item_list[2].i_category } </li>
-							<li>${ selected_item_list[2].i_level } </li>
-							<c:if test="${ not (selected_item_list[2].i_hp eq 0)}">
-								<li>HP ${ selected_item_list[2].i_hp } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_hp_percent eq 0)}">
-								<li>HP ${ selected_item_list[2].i_hp_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_ad eq 0)}">
-								<li>공격력 ${ selected_item_list[2].i_ad } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_ad_percent eq 0)}">
-								<li>공격력 ${ selected_item_list[2].i_ad_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_ap eq 0)}">
-								<li>주문력 ${ selected_item_list[2].i_ap } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_ap_percent eq 0)}">
-								<li>주문력 ${ selected_item_list[2].i_ap_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_armor eq 0)}">
-								<li>방어력 ${ selected_item_list[2].i_armor } 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_armor_percent eq 0)}">
-								<li>방어력 ${ selected_item_list[2].i_armor_percent }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_critical eq 0)}">
-								<li>크리티컬 ${ selected_item_list[2].i_critical }% 증가</li>
-							</c:if>
-							<c:if test="${ not (selected_item_list[2].i_avd eq 0)}">
-								<li>회피율 ${ selected_item_list[2].i_avd }% 증가</li>
-							</c:if>
-						</ul>
-					</span>
-				</div><br>
-				<!-- <img id="random1" src="resources/img/logo.png">
-				<img id="random2" src="resources/img/logo.png">
-				<img id="random3" src="resources/img/logo.png"><br>-->
-				<input type="button" id="again" value="again(cost cookie 10)"
-																onclick="item_shuffle();"><br>
-				<button id="next_level" onclick="dungeon();">NEXT LEVEL</button>
 			</div>
-			<div id="clear">
-			
-			</div>
+		</div> <!-- random_back end  -->
 	</div>	
 <!------------------------------------------------------------------------>
 	<div id = "footer">

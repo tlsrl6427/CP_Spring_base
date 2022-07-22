@@ -133,7 +133,7 @@ var s_val = [];
 			url: 'game/shop/item_shuffle.do',
 			data: {"stage_val": stage_val},
 			success: function(res_data){
-				$('#random_items > div').each(function(index, item){
+				$('#random1 > div').each(function(index, item){
 					$(item).css('visibility', 'visible');
 					$(item).attr("id", res_data[index].i_idx);
 					$(item).text(res_data[index].i_name);
@@ -283,7 +283,7 @@ var s_val = [];
 
 			<div id="random_items">
 				<div id="random_back" style="background-image: url('resources/img/shop_back.png');">
-					<div id="ramdom1">
+					<div id="random1">
 					<br><br><br><br><br>
 						<div id="${ selected_item_list[0].i_idx }" class="tooltip" onclick="item_buy(this)">${ selected_item_list[0].i_name }<br>
 							<span class="tooltiptext">

@@ -20,6 +20,20 @@
 	text-align: center;
 }
 
+#story_back{
+	
+	width: 850px;
+	height: 520px;
+}
+
+#story_textbox{
+	
+	width: 700px;
+	height: 200px;
+	margin-top: 150px;
+	
+}
+
 #footer{
 	width: 100%;
 	height: 80px;

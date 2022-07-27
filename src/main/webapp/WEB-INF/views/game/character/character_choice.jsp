@@ -12,16 +12,19 @@
 </style>
 <script type="text/javascript">
 //선택한 캐릭터 정보 보내기
-	function choice(){
-		var c_idx = $("input:radio:checked").val();
+	function choice(t){
+		var c_idx = $(t).attr("name");
 		stage_val++;
+		
+		if(confirm("캐릭터를 선택하시겠습니까?")==false) return;
+		
 		$.ajax({
 			url: 'game/character/character_choice.do',
 			data: { 'c_idx': c_idx},
 			success: function(res_data){
 				$('#disp').html(res_data);
 			}
-		}) 
+		});
 	}
 </script>
 </head>
@@ -34,7 +37,7 @@
       </a>               
    </div>
 <!------------------------------------------------------------------------>
-   <div id="content">
+   <div id="content" style="background-image: url('resources/img/char_back.png');"> 
 	  <div>
 	     <div id="warrior_div">
 	     	<img id="warrior_name" src="${ pageContext.request.contextPath }/resources/img/warrior_name.png">
@@ -56,10 +59,11 @@
 	     <div style="clear: both;"></div>
 	     
 	     <div style="margin-top: 270px;">
-	     	<input id="pick_war" type="radio" name="pick" value="1">
-	     	<input id="pick_wiz" type="radio" name="pick" value="3">
-	     	<input id="pick_arc" type="radio" name="pick" value="2"><br>
-		    <button onclick="choice();">선택완료</button>
+	     	<input id="pick_war" type="button" name="1" value="선택" onclick="choice(this);">
+	     	<input id="pick_wiz" type="button" name="3" value="선택" onclick="choice(this);">
+	     	<input id="pick_arc" type="button" name="2" value="선택" onclick="choice(this);"><br>
+	     	]
+		    <!-- <button onclick="choice();">선택완료</button> -->
 	     </div>
 	  </div>  
 	     

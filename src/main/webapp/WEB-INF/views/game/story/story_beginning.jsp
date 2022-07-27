@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/story_choice.css">
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/story_main.css">
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/logo.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
+
 	function choice(){
 			$.ajax({
 				url: 'game/character/character_choice_form.do',
@@ -16,6 +17,13 @@
 				}
 			})
 	}
+	
+	$( document ).ready( function() {
+		$( '#story_textbox' ).fadeToggle(0);
+        $( '#story_textbox' ).fadeIn( 2000 );
+    });
+	
+	
 </script>
 </head>
 <body>
@@ -28,7 +36,13 @@
    </div>
 <!------------------------------------------------------------------------>
    <div id="content">
-	     <button onclick="choice();">캐릭터 선택</button>
+   	 <div id="story_back" style="background-image: url('resources/img/back1.png');">
+   	   <img id="story_textbox" src="${ pageContext.request.contextPath }/resources/img/story_textbox.png">
+   	   <br><button onclick="choice();">캐릭터 선택</button>
+   	 </div>		
+	 <div>
+	 	
+	 </div>
    </div>
 <!------------------------------------------------------------------------>
    <div id = "footer">

@@ -16,24 +16,20 @@
 	width: 100%;
 	height: 80%; 
 	font-family: 'IBM Plex Sans KR', sans-serif;
-	background: gray;
 	text-align: center;
-}
-
-#stage_info{
-	width: 830px;
-	height: 47px;
-	float: right;
-	background: red;
-	margin-top: 10px;
 }
 
 #game_page{
 	/* 게임사용가능 너비는 700px */
 	width: 830px;
-	height: 330px;
+	height: 400px;
 	float: right;
-	background: yellow;
+}
+
+#game_page > table{
+	
+	margin: 5px;
+	margin-top: 20px;
 }
 
 #guard_info{
@@ -41,7 +37,7 @@
 	width: 70px;
 	height: 310px;
 	float: left;
-	background: skyblue;
+	background: darkgray;
 	margin: 10px;
 	margin-left: 10px;
 	
@@ -73,37 +69,46 @@
 	width: 380px;
 	height: 120px;
 	float: left;
+}
 
+#back{
+    height: 100vh;
+    width: 100vw;
+    
+    background-repeat : no-repeat;
+    background-size : cover;
 }
 
 #user_state{
-	background: green;
 	height: 80px;
 }
 
 #user_state > table{
 	width: 100%;
 	text-align: left;
-	margin-left: 3px;
 	height: 80px;
 }
 
 #btn_state{
-	background: lightgreen;
 	height: 40px;
+	background: darkgray;
 }
 
 #story_page{
 	width: 450px;
 	height: 120px;
 	float: right;
-	background: orange;
 }
 
 #txt{
 	resize: none;
 	width: 450px;
-	height: 120px;
+	height: 90px;
+	padding-left: 60px;
+	padding-top: 15px;
+	margin-top: 15px;
+	border: none;
+	background-color: transparent;
 }
 
 #state_story{
@@ -111,14 +116,11 @@
 	width: 830px;
 	height: 70px;
 	float: right;
-	background: gray;
 	
 }
 
 #right{
-	
-	margin-right: 10px;	
-	
+	margin-right: 10px;
 }
 
 #footer{
@@ -169,3 +171,14 @@
 	margin-right: 70px; 
 	margin-top: 20px;
 }
+
+.progress {
+    position: relative;
+}
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+ }

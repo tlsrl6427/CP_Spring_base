@@ -41,4 +41,10 @@ public class UserController {
 		
 		return "user/login";
 	}
+	
+	@RequestMapping("join.do")
+	public String join() {
+		
+		return "user/join";
+	}
 }

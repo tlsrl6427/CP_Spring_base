@@ -13,7 +13,10 @@ public class Wizard extends CharacterVo {
    public void active_skill1(MopVo mopVo, AttackVo attack_mop_vo) {
       // 아이스볼 10(1.5ap)
       System.out.println("아이스볼!");
-      int damage = 10 + this.getC_ap() * 3 / 2;
+      int damage = getSkill_vo().get(0).getS_basic_damage() +  
+				getSkill_vo().get(0).getS_add_damage() * getActive_skill_level()[0] +
+				getSkill_vo().get(0).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(0).getS_coeff_ap() * getC_ap();
       attack_mop_vo.setDamage(damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       mopVo.setM_hp(mopVo.getM_hp() - damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       attack_mop_vo.setBattle_info(String.format("%s(이)가 %s에게 %s(으)로 %d의 피해를 입혔습니다.", this.getC_name(),
@@ -33,7 +36,10 @@ public class Wizard extends CharacterVo {
    public void active_skill2(MopVo mopVo, AttackVo attack_mop_vo) {
       // 썬더볼트 30(2ap)
       System.out.println("썬더볼트!");
-      int damage = 30 + this.getC_ap() * 2;
+      int damage = getSkill_vo().get(1).getS_basic_damage() +  
+				getSkill_vo().get(1).getS_add_damage() * getActive_skill_level()[1] +
+				getSkill_vo().get(1).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(1).getS_coeff_ap() * getC_ap();
       attack_mop_vo.setDamage(damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       mopVo.setM_hp(mopVo.getM_hp() - damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       attack_mop_vo.setBattle_info(String.format("%s(이)가 %s에게 %s(으)로 %d의 피해를 입혔습니다.", this.getC_name(),
@@ -51,7 +57,10 @@ public class Wizard extends CharacterVo {
    public void active_skill3(MopVo mopVo, AttackVo attack_mop_vo) {
       // 메테오 50(2.5ap)
       System.out.println("메테오!");
-      int damage = 50 + this.getC_ap() * 5 / 2;
+      int damage = getSkill_vo().get(2).getS_basic_damage() +  
+				getSkill_vo().get(2).getS_add_damage() * getActive_skill_level()[2] +
+				getSkill_vo().get(2).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(2).getS_coeff_ap() * getC_ap();
       attack_mop_vo.setDamage(damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       mopVo.setM_hp(mopVo.getM_hp() - damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       attack_mop_vo.setBattle_info(String.format("%s(이)가 %s에게 %s(으)로 %d의 피해를 입혔습니다.", this.getC_name(),
@@ -92,8 +101,11 @@ public class Wizard extends CharacterVo {
    public void active_skill6(MopVo mopVo, AttackVo attack_mop_vo) {
       // 인비저블(쉴드 생성, 10 + 2ap)
       System.out.println("인비저블!");
-      int damage_reduced = 5;
-      int damage_reduced_turn = 5;
+      int damage_reduced = getSkill_vo().get(5).getS_basic_damage() +  
+				getSkill_vo().get(5).getS_add_damage() * getActive_skill_level()[5] +
+				getSkill_vo().get(5).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(5).getS_coeff_ap() * getC_ap();
+      int damage_reduced_turn = getSkill_vo().get(5).getS_turn();
       this.setDamage_reduced(getDamage_reduced() + damage_reduced);
       this.setDamage_reduced_turn(damage_reduced);
       attack_mop_vo.setDamage_reduced(damage_reduced_turn);

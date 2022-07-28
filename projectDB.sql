@@ -32,13 +32,18 @@ alter table character_info add column c_img varchar(255)
 
 create table skill
 (
-	s_idx				int auto_increment,					-- Skill Index	(*pk)
+	s_idx					int auto_increment,					-- Skill Index	(*pk)
 	s_name				varchar(30),						-- Skill Name
 	s_num				int,								-- Skill Num(몇번째 스킬인지)
 	s_category			varchar(30),						-- Skill Category('damage', 'buff', 'cc', 'debuff', 'dot')
 	s_turn				int,								-- Skill Turn(쿨타임)
 	s_valid				int,								-- Skill Valid(스킬이 적용되는 턴수; 즉발데미지류 0)
-	c_idx				int,								-- Character Index(*fk)	
+	c_idx					int,								-- Character Index(*fk)	
+	s_basic_damage int,								-- Skill Basic Damage
+	s_add_damage 	int,								-- Skill Additional Damage
+	s_coeff_ad 		double,							-- Skill AD coefficient
+	s_coeff_ap 		double,							-- Skill AD coefficient
+	s_info				varchar(200),					-- Skill Information
 	PRIMARY KEY (s_idx)
 )
 
@@ -63,14 +68,15 @@ create table item
 
 create table mop
 (
-	m_idx 				int,						-- Mop Index
+	m_idx 				int auto_increment,						-- Mop Index
 	m_name 				varchar(30),				-- Mop Name
 	m_hp 				int,						-- Mop Health Point
 	m_ad				int,						-- Mop Attack Damage
 	m_armor			int,						-- Mop armor
 	m_skill 			varchar(30),				-- Mop Skill
 	m_level				varchar(30),		-- Mop Level('일반', '네임드', '중간보스', '보스')
-	stage_val			int						--Mop Stage Value(어느 스테이지에서 나오는지)
+	stage_val			int,						--Mop Stage Value(어느 스테이지에서 나오는지)
+	PRIMARY KEY (m_idx)
 )
 
 

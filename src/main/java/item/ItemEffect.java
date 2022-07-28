@@ -31,70 +31,128 @@ public class ItemEffect {
 		//효과부여하기
 		random.setSeed(System.currentTimeMillis());
 		for(int i=0; i<3; i++) {
-			if(item_list.get(random_item[i]).getI_level().equals("일반")) {
-				//스테이지 1이면 5~10 체력, 방어력
-				//스테이지 2이면 11~15
-				//스테이지 3이면 16~20
-				//체력 방어력 + 
-				int hp_increase = random.nextInt(5) + stage_num * 5 + 1;
-				int armor_increase = random.nextInt(5) + stage_num * 5 + 1;
-				item_list.get(random_item[i]).setI_hp(hp_increase);
-				item_list.get(random_item[i]).setI_armor(armor_increase);
+			if(item_list.get(random_item[i]).getI_category().equals("무기")) {//무기일때
 				
-			}else if(item_list.get(random_item[i]).getI_level().equals("고급")) {
-				//스테이지 2이면 11~15 + 회피율 5~7%, 체력·방어력 11~15%
-				//스테이지 3이면 16~20 + 회피율 7~10%, 체력·방어력 16~20%
-				//체력 방어력 +
-				int hp_increase = random.nextInt(5) + stage_num * 5 + 1;
-				int armor_increase = random.nextInt(5) + stage_num * 5 + 1;
-				item_list.get(random_item[i]).setI_hp(hp_increase);
-				item_list.get(random_item[i]).setI_armor(armor_increase);
-				
-				//보조스탯(회피율, 체력%, 방어력%) +
-				random.setSeed(System.currentTimeMillis());
-				int random_effect  = random.nextInt(3)+1;
-				//System.out.println("랜덤수: " + random_effect);
-				random.setSeed(System.currentTimeMillis());
-				if(random_effect==1) {
-					int avd_increase = random.nextInt(3)+1 + stage_num * 5;
-					item_list.get(random_item[i]).setI_avd(avd_increase);
-				}else if(random_effect==2) {
-					int hp_percent_increase = random.nextInt(5)+1 + stage_num * 5;
-					item_list.get(random_item[i]).setI_hp_percent(hp_percent_increase);
-				}else{
-					int armor_percent_increase = random.nextInt(5)+1 + stage_num * 5;
-					item_list.get(random_item[i]).setI_armor_percent(armor_percent_increase);
+				if(item_list.get(random_item[i]).getI_level().equals("일반")) {
+					
+					int ad_increase = random.nextInt(5)+1 + (stage_num-1) * 10;
+					int ap_increase = random.nextInt(5)+1 + (stage_num-1) * 10;
+					item_list.get(random_item[i]).setI_ad(ad_increase);
+					item_list.get(random_item[i]).setI_ap(ap_increase);
+					
+					
+				}else if(item_list.get(random_item[i]).getI_level().equals("고급")) {
+					
+					int ad_increase = random.nextInt(7)+3 + (stage_num-1) * 15;
+					int ap_increase = random.nextInt(7)+3 + (stage_num-1) * 15;
+					item_list.get(random_item[i]).setI_ad(ad_increase);
+					item_list.get(random_item[i]).setI_ap(ap_increase);
+					
+					//보조스탯(크리티컬, ad, ap) +
+					random.setSeed(System.currentTimeMillis());
+					int random_effect  = random.nextInt(3)+1;
+					//System.out.println("랜덤수: " + random_effect);
+					random.setSeed(System.currentTimeMillis());
+					if(random_effect==1) {
+						int critical_increase = random.nextInt(5)+1 + (stage_num-1) * 5;
+						item_list.get(random_item[i]).setI_critical(critical_increase);
+					}else if(random_effect==2) {
+						int ad_percent_increase = random.nextInt(5)+1 + (stage_num-1) * 3;
+						item_list.get(random_item[i]).setI_ad_percent(ad_percent_increase);
+					}else{
+						int ap_percent_increase = random.nextInt(5)+1 + (stage_num-1) * 3;
+						item_list.get(random_item[i]).setI_ap_percent(ap_percent_increase);
+					}
+					
+				}else if(item_list.get(random_item[i]).getI_level().equals("희귀")) {
+					
+					int ad_increase = random.nextInt(5)+3 + (stage_num-1) * 15;
+					int ap_increase = random.nextInt(5)+3 + (stage_num-1) * 15;
+					item_list.get(random_item[i]).setI_ad(ad_increase);
+					item_list.get(random_item[i]).setI_ap(ap_increase);
+					
+					//보조스탯(크리티컬, ad, ap) +
+					random.setSeed(System.currentTimeMillis());
+					int random_effect  = random.nextInt(3)+1;
+					//System.out.println("랜덤수: " + random_effect);
+					random.setSeed(System.currentTimeMillis());
+					if(random_effect==1) {
+						int critical_increase = random.nextInt(5)+1 + (stage_num-1) * 5;
+						item_list.get(random_item[i]).setI_critical(critical_increase);
+					}else if(random_effect==2) {
+						int ad_percent_increase = random.nextInt(5)+1 + (stage_num-1) * 3;
+						item_list.get(random_item[i]).setI_ad_percent(ad_percent_increase);
+					}else{
+						int ap_percent_increase = random.nextInt(5)+1 + (stage_num-1) * 3;
+						item_list.get(random_item[i]).setI_ap_percent(ap_percent_increase);
+					}
 				}
-			}else if(item_list.get(random_item[i]).getI_level().equals("희귀")) {
-				//스테이지 1이면 5~10 + 회피율 3~5%, 체력·방어력 5~10% + 특수스킬
-				//스테이지 2이면 11~15 + 회피율 5~7%, 체력·방어력 11~15%
-				//스테이지 3이면 16~20 + 회피율 7~10%, 체력·방어력 16~20%
-				//스테이지 1이면 5~10 + 회피율 3~5%, 체력·방어력 5~10%
-				//스테이지 2이면 11~15 + 회피율 5~7%, 체력·방어력 11~15%
-				//스테이지 3이면 16~20 + 회피율 7~10%, 체력·방어력 16~20%
 				
-				//체력 방어력 +
-				int hp_increase = random.nextInt(5) + stage_num * 5 + 1;
-				int armor_increase = random.nextInt(5) + stage_num * 5 + 1;
-				item_list.get(random_item[i]).setI_hp(hp_increase);
-				item_list.get(random_item[i]).setI_armor(armor_increase);
-				
-				//보조스탯(회피율, 체력%, 방어력%) +
-				random.setSeed(System.currentTimeMillis());
-				int random_effect  = random.nextInt(3);
-				random.setSeed(System.currentTimeMillis());
-				if(random_effect==1) {
-					int avd_increase = random.nextInt(2) + stage_num * 3;
-					item_list.get(random_item[i]).setI_avd(avd_increase);
-				}else if(random_effect==2) {
-					int hp_percent_increase = random.nextInt(4) + stage_num * 5;
-					item_list.get(random_item[i]).setI_hp_percent(hp_percent_increase);
-				}else{
-					int armor_percent_increase = random.nextInt(4) + stage_num * 5;
-					item_list.get(random_item[i]).setI_armor_percent(armor_percent_increase);
+			}else {//방어구일때
+				if(item_list.get(random_item[i]).getI_level().equals("일반")) {
+					//스테이지 1이면 5~10 체력, 방어력
+					//스테이지 2이면 11~15
+					//스테이지 3이면 16~20
+					//체력 방어력 + 
+					int hp_increase = random.nextInt(5) + stage_num * 5 + 1;
+					int armor_increase = random.nextInt(5) + stage_num * 5 + 1;
+					item_list.get(random_item[i]).setI_hp(hp_increase);
+					item_list.get(random_item[i]).setI_armor(armor_increase);
+					
+				}else if(item_list.get(random_item[i]).getI_level().equals("고급")) {
+					//스테이지 2이면 11~15 + 회피율 5~7%, 체력·방어력 11~15%
+					//스테이지 3이면 16~20 + 회피율 7~10%, 체력·방어력 16~20%
+					//체력 방어력 +
+					int hp_increase = random.nextInt(5) + stage_num * 5 + 1;
+					int armor_increase = random.nextInt(5) + stage_num * 5 + 1;
+					item_list.get(random_item[i]).setI_hp(hp_increase);
+					item_list.get(random_item[i]).setI_armor(armor_increase);
+					
+					//보조스탯(회피율, 체력%, 방어력%) +
+					random.setSeed(System.currentTimeMillis());
+					int random_effect  = random.nextInt(3)+1;
+					//System.out.println("랜덤수: " + random_effect);
+					random.setSeed(System.currentTimeMillis());
+					if(random_effect==1) {
+						int avd_increase = random.nextInt(3)+1 + stage_num * 5;
+						item_list.get(random_item[i]).setI_avd(avd_increase);
+					}else if(random_effect==2) {
+						int hp_percent_increase = random.nextInt(5)+1 + stage_num * 5;
+						item_list.get(random_item[i]).setI_hp_percent(hp_percent_increase);
+					}else{
+						int armor_percent_increase = random.nextInt(5)+1 + stage_num * 5;
+						item_list.get(random_item[i]).setI_armor_percent(armor_percent_increase);
+					}
+				}else if(item_list.get(random_item[i]).getI_level().equals("희귀")) {
+					//스테이지 1이면 5~10 + 회피율 3~5%, 체력·방어력 5~10% + 특수스킬
+					//스테이지 2이면 11~15 + 회피율 5~7%, 체력·방어력 11~15%
+					//스테이지 3이면 16~20 + 회피율 7~10%, 체력·방어력 16~20%
+					//스테이지 1이면 5~10 + 회피율 3~5%, 체력·방어력 5~10%
+					//스테이지 2이면 11~15 + 회피율 5~7%, 체력·방어력 11~15%
+					//스테이지 3이면 16~20 + 회피율 7~10%, 체력·방어력 16~20%
+					
+					//체력 방어력 +
+					int hp_increase = random.nextInt(5) + stage_num * 5 + 1;
+					int armor_increase = random.nextInt(5) + stage_num * 5 + 1;
+					item_list.get(random_item[i]).setI_hp(hp_increase);
+					item_list.get(random_item[i]).setI_armor(armor_increase);
+					
+					//보조스탯(회피율, 체력%, 방어력%) +
+					random.setSeed(System.currentTimeMillis());
+					int random_effect  = random.nextInt(3);
+					random.setSeed(System.currentTimeMillis());
+					if(random_effect==1) {
+						int avd_increase = random.nextInt(2) + stage_num * 3;
+						item_list.get(random_item[i]).setI_avd(avd_increase);
+					}else if(random_effect==2) {
+						int hp_percent_increase = random.nextInt(4) + stage_num * 5;
+						item_list.get(random_item[i]).setI_hp_percent(hp_percent_increase);
+					}else{
+						int armor_percent_increase = random.nextInt(4) + stage_num * 5;
+						item_list.get(random_item[i]).setI_armor_percent(armor_percent_increase);
+					}
 				}
 			}
-			
 			item_list.get(random_item[i]);
 		}
 		//아이템 확인

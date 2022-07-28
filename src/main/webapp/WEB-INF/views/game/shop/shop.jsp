@@ -182,7 +182,7 @@ $("input:checkbox").click(function() {
        for (var a of $("input[id=skill_no]")) {
            t_num = 0;
            t_num = Number($(a).val());
-           s_val.push(t_num);
+           //s_val.push(t_num);
            num = num + Number($(a).val());
         }
       
@@ -197,9 +197,7 @@ $("input:checkbox").click(function() {
        
        //console.log(s_val);
        
-       if (Myelement.value == 0) {
-          $('input[id=skill_no]').prop('disabled', true);
-       }
+       
        ////////////////스킬설명//////////////////////////////////////////////
        var skill_num = Number( $(this).prev().prev().attr('name') );
        var damage;

@@ -21,7 +21,10 @@ public class Archer extends CharacterVo {
    public void active_skill1(MopVo mopVo, AttackVo attack_mop_vo) {
       // 더블 애로우 10(1.5ad)
       System.out.println("더블 애로우!");
-      int damage = 10 + this.getC_ad() * 3 / 2;
+      int damage = getSkill_vo().get(0).getS_basic_damage() +  
+				getSkill_vo().get(0).getS_add_damage() * getActive_skill_level()[0] +
+				getSkill_vo().get(0).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(0).getS_coeff_ap() * getC_ap();
       attack_mop_vo.setDamage(damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       mopVo.setM_hp(mopVo.getM_hp() - damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       attack_mop_vo.setBattle_info(String.format("%s(이)가 %s에게 %s(으)로 %d의 피해를 입혔습니다.", this.getC_name(),
@@ -43,8 +46,11 @@ public class Archer extends CharacterVo {
    public void active_skill2(MopVo mopVo, AttackVo attack_mop_vo) {
       // 포이즌 애로우 5(2ap)
       System.out.println("포이즌 애로우!");
-      int dot_damage = 5 + this.getC_ap() * 2;
-      int dot_damage_turn = 5;
+      int dot_damage = getSkill_vo().get(1).getS_basic_damage() +  
+				getSkill_vo().get(1).getS_add_damage() * getActive_skill_level()[1] +
+				getSkill_vo().get(1).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(1).getS_coeff_ap() * getC_ap();
+      int dot_damage_turn = getSkill_vo().get(1).getS_turn();
       attack_mop_vo.setDot_damage(dot_damage);
       attack_mop_vo.setDot_damage_turn(dot_damage_turn);
       mopVo.setDot_damage(dot_damage);
@@ -68,7 +74,10 @@ public class Archer extends CharacterVo {
    public void active_skill3(MopVo mopVo, AttackVo attack_mop_vo) {
       // 스카이 애로우 50(1.5ad)
       System.out.println("스카이 애로우!");
-      int damage = 50 + this.getC_ad() * 3 / 2;
+      int damage = getSkill_vo().get(2).getS_basic_damage() +  
+				getSkill_vo().get(2).getS_add_damage() * getActive_skill_level()[2] +
+				getSkill_vo().get(2).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(2).getS_coeff_ap() * getC_ap();
       attack_mop_vo.setDamage(damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       mopVo.setM_hp(mopVo.getM_hp() - damage * (5000 / (50 + mopVo.getM_armor())) / 100);
       attack_mop_vo.setBattle_info(String.format("%s(이)가 %s에게 %s(으)로 %d의 피해를 입혔습니다.", this.getC_name(),
@@ -90,7 +99,10 @@ public class Archer extends CharacterVo {
    public void active_skill4(MopVo mopVo, AttackVo attack_mop_vo) {
       // 차지드 애로우 (고정데미지)
       System.out.println("차지드 애로우!");
-      int damage = 100;
+      int damage = getSkill_vo().get(3).getS_basic_damage() +  
+				getSkill_vo().get(3).getS_add_damage() * getActive_skill_level()[3] +
+				getSkill_vo().get(3).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(3).getS_coeff_ap() * getC_ap();
       attack_mop_vo.setDamage(damage);
       mopVo.setM_hp(mopVo.getM_hp() - damage);
       attack_mop_vo.setBattle_info(String.format("%s(이)가 %s에게 %s(으)로 %d의 피해를 입혔습니다.", this.getC_name(),
@@ -133,8 +145,11 @@ public class Archer extends CharacterVo {
    public void active_skill7(MopVo mopVo, AttackVo attack_mop_vo) {
       // 포커스온(캐릭터 회피율과 크리티컬 확률을 올린다.)
       System.out.println("포커스 온!");
-      int avoid_increased = 5;
-      int critical_increased = 10;
+      int avoid_increased = getSkill_vo().get(6).getS_basic_damage() +  
+				getSkill_vo().get(6).getS_add_damage() * getActive_skill_level()[6] +
+				getSkill_vo().get(6).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(6).getS_coeff_ap() * getC_ap();
+      int critical_increased = avoid_increased * 2;
       this.setC_avd(this.getC_avd() + avoid_increased);
       this.setC_critical(this.getC_critical() + critical_increased);
       attack_mop_vo.setBattle_info(String.format("%s(이)의 회피율이 %d만큼 상승하고, 크리티컬 확률이 %d만큼 상승하였습니다.", this.getC_name(),
@@ -145,7 +160,10 @@ public class Archer extends CharacterVo {
    public void active_skill8(MopVo mopVo, AttackVo attack_mop_vo) {
       // 오버드라이브(평타강화) ad * 3
       System.out.println("오버드라이브!");
-      int ad_increased = this.getC_ad() * 3;
+      int ad_increased = getSkill_vo().get(7).getS_basic_damage() +  
+				getSkill_vo().get(7).getS_add_damage() * getActive_skill_level()[7] +
+				getSkill_vo().get(7).getS_coeff_ad() * getC_ad() + 
+				getSkill_vo().get(7).getS_coeff_ap() * getC_ap();
       this.setC_ad(ad_increased);
       attack_mop_vo.setBattle_info(String.format("%s(이)의 기본 공격력이 %d으로 상승하였습니다.", this.getC_name(), ad_increased));
    }

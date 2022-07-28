@@ -45,7 +45,7 @@
 }
 
 #warrior_div, #wizard_div, #archor_div{
-	margin-top: 30px;
+	margin-top: 50px;
 	float: left;
 	width: 250px;
 	height: 140px;
@@ -74,8 +74,8 @@
 }
 
 #pick_wiz{
-	margin-left: 233px;
-	margin-right: 230px;
+	margin-left: 210px;
+	margin-right: 210px;
 	margin-bottom: 20px;
 }
 

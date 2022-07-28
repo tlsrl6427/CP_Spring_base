@@ -10,11 +10,12 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel = "stylesheet" href = "../css/join.css">
-<link rel="stylesheet" href="../css/login_join_main.css">
-<link rel="stylesheet" type="text/css" href="../css/login_util.css">
-<link rel="stylesheet" type="text/css" href="../css/login_main.css">
-<link rel="stylesheet" type="text/css" href="../css/logo.css">
+<link rel = "stylesheet" href = "../resources/css/join.css">
+<link rel="stylesheet" href="../resources/css/login_join_main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/login_util.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/login_main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/login_join_main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/logo.css">
 
 <script type="text/javascript">
    var regular_id      = /^[a-zA-Z0-9]{3,16}$/;
@@ -293,7 +294,7 @@ function send(f) {
 <div id="box">
 	<div id="header">
 		<a href="../index.jsp">
-			<img id="logo" src="../img/logo.png">
+			<img id="logo" src="../resources/img/logo.png">
 		</a>						
 	</div>
 <!------------------------------------------------------------------------>
@@ -327,16 +328,7 @@ function send(f) {
 							<input class="input100" type="password" name="m_cpwd" id="m_cpwd" placeholder="Password Confirm">
 							<span class="focus-input100"></span>
 						</div>
-							
-							<span id="email_msg"><br></span>
-						<div class="wrap-input100 validate-input m-b-10">
-							<input class="input100" type="text" name="m_email" id="m_email" placeholder="Email">
-							<span class="focus-input100"></span>
-						</div>
-							
-							
-							<input type="button" class="login100-form-btn" id="btn_email" value="인증번호발송">
-					
+						
 					<div class="container-login100-form-btn m-t-17">
 						<input type="button" class="login100-form-btn" id="join" value="Join" onclick="send(this.form);">
 					</div>

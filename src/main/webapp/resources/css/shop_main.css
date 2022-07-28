@@ -16,7 +16,6 @@
 	width: 100%;
 	height: 80%; 
 	font-family: 'IBM Plex Sans KR', sans-serif;
-	background: gray;
 	text-align: center;
 }
 
@@ -30,7 +29,6 @@
 #copyright{
 	width:100%;
 	text-align:center;
-	color: darkgray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
@@ -60,6 +58,8 @@ table{
 #skill_no{
 	
 	margin-left: 7px;	
+	width: 30px;
+	
 }
 
 #skill_left{

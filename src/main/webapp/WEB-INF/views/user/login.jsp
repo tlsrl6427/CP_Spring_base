@@ -11,11 +11,11 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<link rel = "stylesheet" href = "css/login.css">
-<link rel="stylesheet" type="text/css" href="../css/login_util.css">
-<link rel="stylesheet" type="text/css" href="../css/login_main.css">
-<link rel="stylesheet" type="text/css" href="../css/login_join_main.css">
-<link rel="stylesheet" type="text/css" href="../css/logo.css">
+<link rel = "stylesheet" href = "../resources/css/login.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/login_util.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/login_main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/login_join_main.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/logo.css">
 
 <script type="text/javascript">
 	
@@ -108,7 +108,7 @@
 <div id="box">
 	<div id="header">
 		<a href="../index.jsp">
-			<img id="logo" src="../img/logo.png">
+			<img id="logo" src="../resources/img/logo.png">
 		</a>						
 	</div>
 <!------------------------------------------------------------------------>

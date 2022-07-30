@@ -7,13 +7,14 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/character_choice.css">
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/logo.css">
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/btn.css">
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 </style>
 <script type="text/javascript">
 //선택한 캐릭터 정보 보내기
-	function choice(t){
-		var c_idx = $(t).attr("name");
+	function choice(idx){
+		var c_idx = idx;
 		stage_val++;
 		
 		if(confirm("캐릭터를 선택하시겠습니까?")==false) return;
@@ -58,11 +59,10 @@
 	     </div>
 	     <div style="clear: both;"></div>
 	     
-	     <div style="margin-top: 270px;">
-	     	<input id="pick_war" type="button" name="1" value="선택" onclick="choice(this);">
-	     	<input id="pick_wiz" type="button" name="3" value="선택" onclick="choice(this);">
-	     	<input id="pick_arc" type="button" name="2" value="선택" onclick="choice(this);"><br>
-	     	]
+	     <div style="margin-top: 245px;">
+	     	<a href='javascript:void(0);' onclick="choice(1);" class="btn-3d_s red rounded">선택</a>
+	     	<a href='javascript:void(0);' onclick="choice(3);" class="btn-3d_s red rounded" style="margin-left: 175px; margin-right: 175px;">선택</a>
+	     	<a href='javascript:void(0);' onclick="choice(2);" class="btn-3d_s red rounded">선택</a>
 		    <!-- <button onclick="choice();">선택완료</button> -->
 	     </div>
 	  </div>  

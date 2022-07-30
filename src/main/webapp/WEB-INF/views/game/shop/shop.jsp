@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/shop_main.css">
 <link rel="stylesheet" type="text/css" href="resources/css/logo.css">
+<link rel="stylesheet" type="text/css" href="resources/css/btn_shop.css">
 <style type="text/css">
 
 	.tooltip .tooltiptext {
@@ -25,7 +26,7 @@
 		
 		  /* Position the tooltip */
 		  position: absolute;
-		  z-index: 1;
+		  z-index: 1000;
 		  /*
 		  bottom: 100%;
 		 left: 50%;
@@ -663,10 +664,13 @@ $("input:checkbox").click(function() {
 									</c:if>
 								</ul>
 							</span>
-							</div><br><br><br><br><br><br><br>
-						<input type="button" id="again" value="again(cost cookie 10)"
-																		onclick="item_shuffle();"><br>
-						<button id="next_level" onclick="dungeon();">NEXT LEVEL</button>
+							</div><br><br><br>
+							
+							<div id="buttons" style="margin-left: 60px;">
+								<button class="button button--pipaluk button--inverted button--round-l button--text-thick button--text-upper" id="again" onclick="item_shuffle();">아이템 리셋</button>
+								<button class="button button--pipaluk button--inverted button--round-l button--text-thick button--text-upper" id="next_level" onclick="dungeon();">다음 스테이지</button>
+							</div>
+					
 					<div id="clear"></div>
 				</div>
 			</div>

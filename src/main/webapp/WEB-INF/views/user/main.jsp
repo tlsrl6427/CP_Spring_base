@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="resources/css/logo.css">
+<link rel="stylesheet" type="text/css" href="resources/css/btn.css">
 
 <script type="text/javascript">
 	function start(){
@@ -32,9 +33,10 @@
 		</a>						
 	</div>
 <!------------------------------------------------------------------------>
-	<div id="content">
-		<button onclick="start()">시작</button>
-		<button onclick="location.href='user/login.do';">로그인</button>
+	<div id="content" style="background-image: url('resources/img/main_back.png');">
+		<img src="resources/img/logo.png" style="width: 350px;"><br>
+		<a href="javascript:start();" class="btn-3d red">Start</a><br>
+		<a href="#" class="btn-3d blue">Ranking</a>
 	</div>	
 <!------------------------------------------------------------------------>
 	<div id = "footer">

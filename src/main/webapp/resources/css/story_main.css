@@ -30,9 +30,29 @@
 	
 	width: 700px;
 	height: 200px;
-	margin-top: 150px;
-	
+	background-size: 700px;
+	background-repeat: no-repeat;
+	margin: auto;	
+	position: absolute;
+	top: 470px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+		
 }
+
+#story_txt{
+	width: 550px; 
+	height: 90px; 
+	background-color: transparent; 
+	margin-top: 65px; 
+	margin-right:50px; 
+	resize: none;
+	border: none;
+	outline: none;
+}
+
+	
+	
 
 #footer{
 	width: 100%;

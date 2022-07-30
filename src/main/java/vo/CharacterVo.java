@@ -17,8 +17,10 @@ public class CharacterVo implements Cloneable{
    String   c_auto_attack;
    String    c_p_skill;
    String  c_img;
-   int    c_original_hp;
+   String c_auto_attack_img;
+   String c_p_skill_img;
    
+   int    c_original_hp;
    int c_hp_percent;
    int c_ad_percent;
    int c_ap_percent;
@@ -243,6 +245,20 @@ public class CharacterVo implements Cloneable{
    
    public static boolean isWizard_passive() {
 	return wizard_passive;
+}
+   
+   
+public String getC_auto_attack_img() {
+	return c_auto_attack_img;
+}
+public void setC_auto_attack_img(String c_auto_attack_img) {
+	this.c_auto_attack_img = c_auto_attack_img;
+}
+public String getC_p_skill_img() {
+	return c_p_skill_img;
+}
+public void setC_p_skill_img(String c_p_skill_img) {
+	this.c_p_skill_img = c_p_skill_img;
 }
 public static void setWizard_passive(boolean wizard_passive) {
 	CharacterVo.wizard_passive = wizard_passive;

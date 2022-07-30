@@ -170,11 +170,47 @@ var s_val = [];
 </script>
 <script type="text/javascript">
 $("input:checkbox").click(function() {
-    var max = $("input:checkbox:checked").length >= 4;     
-    $("input:checkbox").not(":checked").attr("disabled",max);
+    
+    var max = $("input:checkbox:checked").length >= 4;    
+    
+       $("input:checkbox").not(":checked").attr("disabled",max);
     });
-  
- var Myelement = document.getElementById('total_no');
+   
+    var Myelement = document.getElementById('total_no');
+    
+    $("input:checkbox").change(function() {
+       
+       $(this).siblings().prop('disabled', false);
+       
+       
+       if (Myelement.value == 0) {
+          alert('스킬 포인트를 모두 소진하였습니다.');
+          $(this).prop("checked", false);
+       } else {
+          Myelement.value = Number(Myelement.value) - 1;
+          Number($(this).next().next().val(Number($(this).next().next().val()) + 1));
+       }
+       
+       
+
+        $("input:checkbox").not(":checked").each(function() {
+           
+           $(this).siblings().prop('disabled', true);
+           
+
+             if ($(this).next().next().val() > 0) {
+                //Myelement.value = Number(Myelement.value) + 1;
+                var temp = 0;
+                temp = Number($(this).next().next().val());
+                console.log(temp);
+                console.log(Number(Myelement.value));
+                Myelement.value = Number(Myelement.value) + temp;
+                $(this).next().next().val(0);
+             }
+
+        });
+
+   });
     
     $("input[type=number]").bind('keyup input', function(){
        var num = 0;
@@ -196,11 +232,7 @@ $("input:checkbox").click(function() {
            return false;
         }
        
-       //console.log(s_val);
        
-       if (Myelement.value == 0) {
-          $('input[id=skill_no]').prop('disabled', true);
-       }
        ////////////////스킬설명//////////////////////////////////////////////
        var skill_num = Number( $(this).prev().prev().attr('name') );
        var damage;

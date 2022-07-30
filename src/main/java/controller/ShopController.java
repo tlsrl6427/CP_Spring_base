@@ -58,8 +58,8 @@ public class ShopController {
       List<ItemVo> item_list = new ArrayList<ItemVo>();
       List<ItemVo> selected_item_list = null;
       
-      int stage_num = stage_val / 5 + 1;
-      stage_num=2;
+      int stage_num = (stage_val-1) / 4 + 1;
+      
       Map map_pub = new HashMap();
       Map map_ch = new HashMap();
       map_ch.put("i_class", main_ch.getC_name());
@@ -142,8 +142,7 @@ public class ShopController {
       List<ItemVo> item_list = new ArrayList<ItemVo>();
       List<ItemVo> selected_item_list = null;
       
-      int stage_num = stage_val / 5 + 1;
-      stage_num=2;
+      int stage_num = (stage_val-1) / 4 + 1;
       
       Map map_pub = new HashMap();
       Map map_ch = new HashMap();

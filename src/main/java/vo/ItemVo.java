@@ -7,6 +7,7 @@ public class ItemVo {
 	String 	i_category;
 	String 	i_name;
 	String 	i_level;
+	String 	i_img;
 	
 	int 	i_hp;
 	int	i_hp_percent;
@@ -34,8 +35,15 @@ public class ItemVo {
 	 */
 	
 	
+	
 	public int getI_idx() {
 		return i_idx;
+	}
+	public String getI_img() {
+		return i_img;
+	}
+	public void setI_img(String i_img) {
+		this.i_img = i_img;
 	}
 	public int getI_hp_percent() {
 		return i_hp_percent;

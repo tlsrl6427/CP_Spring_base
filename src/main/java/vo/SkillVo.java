@@ -14,8 +14,16 @@ public class SkillVo {
    int s_coeff_ad;
    int s_coeff_ap;
    String s_info;
+   String s_img;
    
-   public String getS_info() {
+   
+   public String getS_img() {
+	return s_img;
+}
+public void setS_img(String s_img) {
+	this.s_img = s_img;
+}
+public String getS_info() {
       return s_info;
    }
    public void setS_info(String s_info) {

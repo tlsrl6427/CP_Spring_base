@@ -12,6 +12,7 @@ public class MopVo {
    String    m_skill;
    String    m_level;
    int stage_val;
+   String m_img;
    
    int damage_reduced = 0;// 받는 피해 감소
    int damage_reduced_turn = 0;// 받는 피해 감소 턴수
@@ -69,7 +70,15 @@ public class MopVo {
    
    
    
-   public int getStage_val() {
+   public String getM_img() {
+	return m_img;
+}
+
+public void setM_img(String m_img) {
+	this.m_img = m_img;
+}
+
+public int getStage_val() {
 	return stage_val;
 }
 

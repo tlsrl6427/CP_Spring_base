@@ -136,6 +136,7 @@ public class DungeonController {
       }
       
       mop = mop_dao.selectOne(stage_val);
+      mop.setM_original_hp(mop.getM_hp());
       System.out.println("mop_ex_name: " + mop.getM_name());
       System.out.println("mop_ex_hp: " + mop.getM_hp());
       System.out.println("mop_ex_ad: " + mop.getM_ad());

@@ -107,17 +107,7 @@ public class DungeonController {
 //      }
       
       main_ch.setActive_skill_level(s_val);
-      List<SkillVo> skill_list = new ArrayList<>();
       
-      //stage_val을 4로 나눠서 몫 0이면 1스테이지
-      /*
-          1->1-1, 2-> 1-2, 3->1-3, 4->1-4
-          5->2-1, 6-> 2-2, 7->2-3,8->2-4
-          9->3-1, 10->3-2, 11->3-3,12->3-4
-          (MopVo) mop_dao.selectOne(stage_val);
-          하면 해당하는 MopVo가 나오고
-          그걸 Mop?_?에 넣어야하는데
-       */
       MopVo mop = null;
       switch(stage_val) {
       case 1 : mop = new Mop1_1();
@@ -137,12 +127,12 @@ public class DungeonController {
       
       mop = mop_dao.selectOne(stage_val);
       mop.setM_original_hp(mop.getM_hp());
-      System.out.println("mop_ex_name: " + mop.getM_name());
-      System.out.println("mop_ex_hp: " + mop.getM_hp());
-      System.out.println("mop_ex_ad: " + mop.getM_ad());
-      System.out.println("mop_ex_armor: " + mop.getM_armor());
-      System.out.println("mop_ex_level: " + mop.getM_level());
-      System.out.println("mop_ex_stage_val: " + mop.getStage_val());
+//      System.out.println("mop_ex_name: " + mop.getM_name());
+//      System.out.println("mop_ex_hp: " + mop.getM_hp());
+//      System.out.println("mop_ex_ad: " + mop.getM_ad());
+//      System.out.println("mop_ex_armor: " + mop.getM_armor());
+//      System.out.println("mop_ex_level: " + mop.getM_level());
+//      System.out.println("mop_ex_stage_val: " + mop.getStage_val());
       //MopVo mop = new MopVo();
       
       // 아이템 적용
@@ -154,7 +144,7 @@ public class DungeonController {
 //      System.out.println("main_ch_ap_percent: " + main_ch.getC_ap_percent());
 //      System.out.println("main_ch_armor_percent: " + main_ch.getC_armor_percent());
 //      System.out.println("--------------적용후---------------");
-      main_ch.item_percent_apply();
+      //main_ch.item_percent_apply();
 //      System.out.println("main_ch_hp: " + main_ch.getC_hp());
 //      System.out.println("main_ch_armor: " + main_ch.getC_armor());
       // mop = mop_dao.selectOne(stage_val);
@@ -181,6 +171,7 @@ public class DungeonController {
          copy_main_ch = new Wizard();
       }
       BeanUtils.copyProperties(main_ch, copy_main_ch);
+      copy_main_ch.item_percent_apply();
 //      System.out.println("-----------복사된 CharacterVo------------");
 //      System.out.println("hp: " + copy_main_ch.getC_hp());
 //      System.out.println("name: " + copy_main_ch.getC_name());
@@ -193,7 +184,11 @@ public class DungeonController {
       // copy_main_ch에 가져온 스킬 4개 레벨, 턴 적용
       
       int original_critical = main_ch.getC_critical();
-
+      String background = null;
+      if(stage_val < 5) background = "resources/img/game_bg_1.png";
+      else if(stage_val < 9) background = "resources/img/game_bg_2.png";
+      else background = "resources/img/game_bg_3.png";
+      
       application.setAttribute("mop", mop);
       application.setAttribute("main_ch", main_ch);
       application.setAttribute("copy_main_ch", copy_main_ch);
@@ -207,8 +202,9 @@ public class DungeonController {
       model.addAttribute("s_idx", s_idx);
       model.addAttribute("s_num", s_num);
       model.addAttribute("original_critical", original_critical);
+      model.addAttribute("background", background);
 
-      return "game/dungeon/dungeon_skeleton01";
+      return "game/dungeon/dungeon_test_sg";
    }
 
    @RequestMapping(value = "battle/attack.do")

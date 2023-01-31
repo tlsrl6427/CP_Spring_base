@@ -40,7 +40,7 @@ public class StoryController {
 	@RequestMapping("story_ending.do")
 	public String story_ending() {
 
-		return "/game/story/story_ending";
+		return "game/story/story_ending";
 	}
 
 }

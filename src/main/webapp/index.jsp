@@ -8,7 +8,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	var stage_val = 0;
+	var stage_val = 1;
+	var skill_point = 10;
+	var cookie = 60;
 	$(function() {
 		$.ajax({
 			url : 'user/main.do',

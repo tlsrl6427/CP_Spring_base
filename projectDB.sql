@@ -24,7 +24,9 @@ create table character_info
 	c_avd				int,						-- Character Avoidability
 	c_auto_attack		varchar(30),				-- Character Auto Attack
 	c_p_skill			varchar(30),			-- Character Passive
-	c_img				varchar(100)			-- Character Image
+	c_img				varchar(100),			-- Character Image
+	c_auto_attack_img   varchar(100),
+	c_p_skill_img       varchar(100)
 )
 
 alter table character_info add column c_img varchar(255)
@@ -44,6 +46,7 @@ create table skill
 	s_coeff_ad 		double,							-- Skill AD coefficient
 	s_coeff_ap 		double,							-- Skill AD coefficient
 	s_info				varchar(200),					-- Skill Information
+	s_img				varchar(200),					-- Skill Image
 	PRIMARY KEY (s_idx)
 )
 
@@ -61,6 +64,7 @@ create table item
 	i_category			varchar(30),				-- Item Category('머리', '상체', '하체', '무기', '물약')
 	i_name 				varchar(30),				-- Item Name
 	i_level				varchar(30),				-- Item Level('일반', '고급', '희귀', '전설')
+	i_img				varchar(200),					-- Item Image
 	PRIMARY KEY (i_idx)
 )
 
@@ -75,6 +79,7 @@ create table mop
 	m_armor			int,						-- Mop armor
 	m_skill 			varchar(30),				-- Mop Skill
 	m_level				varchar(30),		-- Mop Level('일반', '네임드', '중간보스', '보스')
+	m_img				varchar(200),					-- Mop Image
 	stage_val			int,						--Mop Stage Value(어느 스테이지에서 나오는지)
 	PRIMARY KEY (m_idx)
 )

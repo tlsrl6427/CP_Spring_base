@@ -104,7 +104,7 @@ public class ShopController {
       
       application.setAttribute("selected_item_list", selected_item_list);
       model.addAttribute("selected_item_list", selected_item_list);
-      return "game/shop/shop";
+      return "game/shop/shop_test_sg";
    }
 
    @RequestMapping(value="item_buy.do")
@@ -122,15 +122,37 @@ public class ShopController {
       List<ItemVo> selected_item_list =  (List<ItemVo>) application.getAttribute("selected_item_list");
       ItemVo selected_item = null;
       for(ItemVo vo : selected_item_list) {
+    	  System.out.println("item_idx: "+vo.getI_idx());
+    	 System.out.println("item_name: "+vo.getI_name());
+	     System.out.println("item_class: "+vo.getI_class());
+	     System.out.println("item_category: "+vo.getI_category());
          if(vo.getI_idx()==i_idx)
             selected_item = vo;
       }
-   
+      System.out.println("--------선택된 아이템----------");
+      System.out.println("item_idx: "+selected_item.getI_idx());
+ 	  System.out.println("item_name: "+selected_item.getI_name());
+	  System.out.println("item_class: "+selected_item.getI_class());
+	  System.out.println("item_category: "+selected_item.getI_category());
+
+      selected_item.setI_cookie(selected_item.getI_cookie()/2);
       main_ch.item_buy(selected_item);
       
       application.setAttribute("main_ch", main_ch);
       
       return selected_item;
+   }
+   
+   @RequestMapping(value="item_sell.do")
+   @ResponseBody
+   public ItemVo item_sell(int category) {
+	   
+	   CharacterVo main_ch = (CharacterVo) application.getAttribute("main_ch");
+	  
+	   main_ch.item_except(main_ch.getItem_list().get(category));
+	   main_ch.getItem_list().set(category, null);
+	   application.setAttribute("main_ch", main_ch);
+	   return null;
    }
    
    @RequestMapping(value="item_shuffle.do")

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1dbae6fa-9feb-4399-a8c9-2a133bbeb66c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/projectDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/project_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DungeonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DungeonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/StoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/StoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/item/ItemEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/item/ItemEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vo/CharacterVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vo/CharacterVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vo/ItemVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vo/ItemVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/mybatis/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/mybatis/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/character/character_choice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/character/character_choice.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/dungeon/dungeon_test_sg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/dungeon/dungeon_test_sg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/story/story_beginning.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/story/story_beginning.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/story/story_ending.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/game/story/story_ending.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/mybatis/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/mybatis/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/CharacterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/CharacterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/DungeonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/DungeonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ShopController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ShopController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/StoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/StoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/info/character/Archer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/info/character/Archer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/info/character/Warrior.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/info/character/Warrior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/info/character/Wizard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/info/character/Wizard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/item/ItemEffect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/item/ItemEffect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vo/CharacterVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vo/CharacterVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vo/ItemVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vo/ItemVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vo/MopVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vo/MopVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vo/SkillVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vo/SkillVo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.ict/paws/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.ict/paws/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.ict/paws/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.ict/paws/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2KiMEjKtqaVpWFyLFEDiG0UDIFl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/WebStudy/ChasingPaws-Spring&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1dbae6fa-9feb-4399-a8c9-2a133bbeb66c" name="Changes" comment="" />
+      <created>1674452840959</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674452840959</updated>
+    </task>
+    <servers />
+  </component>
+</project>

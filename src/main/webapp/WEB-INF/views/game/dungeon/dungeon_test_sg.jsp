@@ -24,6 +24,7 @@
 <script type="text/javascript">
    $(function(){
       alert(stage_val + " 스테이지");
+      $('#game_page').css({"background":"url('${ background }')"});
    })
    
    function choice(){
@@ -66,6 +67,10 @@
 	            $("#txt").html(content); 
 	            document.getElementById("txt").scrollTop = document.getElementById("txt").scrollHeight;
 	            
+	            if(res_data.mop.m_hp<=0)
+		               next_stage();
+		            else if(res_data.main_ch.c_hp<=0)
+		               previous_shop();
 	         }
 	      })
 	      
@@ -74,28 +79,41 @@
    function cool_time(res_data){
 	      console.log("쿨타임함수로 들어옴")
 	      console.log(res_data.main_ch.active_skill_remaining_turn);
-	      if(res_data.main_ch.active_skill_remaining_turn[${ s_num[0]-1 }]!=0)
+	      if(res_data.main_ch.active_skill_remaining_turn[${ s_num[0]-1 }]!=0){
 	         $($("[id='btn_skill_a']").get(0)).css('pointer-events', 'none');
-	      else
+	         $($("[id='btn_skill_a']").get(0)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/bw/${ main_ch.skill_vo[s_num[0] - 1].s_img }');
+	      }
+	      else{
 	         $($("[id='btn_skill_a']").get(0)).css('pointer-events', 'auto');
+	         $($("[id='btn_skill_a']").get(0)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/${ main_ch.skill_vo[s_num[0] - 1].s_img }');
+	      }
 	         
-	      if(res_data.main_ch.active_skill_remaining_turn[${ s_num[1]-1 }]!=0)
+	      if(res_data.main_ch.active_skill_remaining_turn[${ s_num[1]-1 }]!=0){
 	         $($("[id='btn_skill_a']").get(1)).css('pointer-events', 'none');
-	      else
+	         $($("[id='btn_skill_a']").get(1)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/bw/${ main_ch.skill_vo[s_num[1] - 1].s_img }');
+	      }
+	      else{
 	         $($("[id='btn_skill_a']").get(1)).css('pointer-events', 'auto');
+	         $($("[id='btn_skill_a']").get(1)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/${ main_ch.skill_vo[s_num[1] - 1].s_img }');
+	      }
 	      
-	      if(res_data.main_ch.active_skill_remaining_turn[${ s_num[2]-1 }]!=0)
+	      if(res_data.main_ch.active_skill_remaining_turn[${ s_num[2]-1 }]!=0){
 	         $($("[id='btn_skill_a']").get(2)).css('pointer-events', 'none');
-	      else
+	         $($("[id='btn_skill_a']").get(2)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/bw/${ main_ch.skill_vo[s_num[2] - 1].s_img }');
+   			}
+	      else{
 	         $($("[id='btn_skill_a']").get(2)).css('pointer-events', 'auto');
+	         $($("[id='btn_skill_a']").get(2)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/${ main_ch.skill_vo[s_num[2] - 1].s_img }');
+	      }
 	      
 	      if(res_data.main_ch.active_skill_remaining_turn[${ s_num[3]-1 }]!=0){
-	    	  
-	      		console.log("???");
 	         $($("[id='btn_skill_a']").get(3)).css('pointer-events', 'none');
+	         $($("[id='btn_skill_a']").get(3)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/bw/${ main_ch.skill_vo[s_num[3] - 1].s_img }');
 	      }
-	      else
+	      else{
 	         $($("[id='btn_skill_a']").get(3)).css('pointer-events', 'auto');
+	         $($("[id='btn_skill_a']").get(3)).find('#btn_skill').attr("src", '${ pageContext.request.contextPath }/resources/img/skill/${ main_ch.skill_vo[s_num[3] - 1].s_img }');
+	      }
 	   }
    
    function skill(s_idx){
@@ -154,6 +172,8 @@
 	            content0 = content0  + "-------------------------------------------------------\n";
 	            $("#txt").html(content0); 
 	            
+	            document.getElementById("txt").scrollTop = document.getElementById("txt").scrollHeight;
+	            
 	            if(res_data.mop.m_hp<=0)
 	               next_stage();
 	            else if(res_data.main_ch.c_hp<=0)
@@ -166,9 +186,13 @@
       //스테이지 정보 ++
       alert("적을 무찔렀습니다");
       alert("다음 스테이지로 넘어갑니다");
+      cookie += 20 + stage_val * 10;
       stage_val++;
+      skill_point += 2;
+      var url = 'game/shop/shop.do';
+      if(stage_val==13) url = 'game/story/story_ending.do';
       $.ajax({
-         url: 'game/shop/shop.do',
+         url: url,
          data: {"stage_val": stage_val},
          success: function(res_data){
             $('#disp').html(res_data);
@@ -180,6 +204,7 @@
       //스테이지 정보--
       alert("사망하였습니다");
       alert("상점에서 부활합니다");
+      cookie += (20 + stage_val * 10)/2;
       $.ajax({
          url: 'game/shop/shop.do',
          data: {"stage_val": stage_val},

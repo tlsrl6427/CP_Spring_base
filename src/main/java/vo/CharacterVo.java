@@ -176,27 +176,32 @@ public class CharacterVo implements Cloneable{
    public void item_buy(ItemVo vo) {
       //어느 파츠인지 구분
       if(vo.getI_category().equals("머리")) {
-         item_except(item_list.get(0));
+    	 if(item_list.get(0)!=null)
+    		 item_except(item_list.get(0));
          item_apply(vo);
          item_list.set(0, vo);
       }
       else if(vo.getI_category().equals("상체")){
-         item_except(item_list.get(1));
+    	 if(item_list.get(1)!=null)
+    		  item_except(item_list.get(1));
          item_apply(vo);
          item_list.set(1, vo);
       }
       else if(vo.getI_category().equals("하체")){
-         item_except(item_list.get(2));
+    	 if(item_list.get(2)!=null)
+    		  item_except(item_list.get(2));
          item_apply(vo);
          item_list.set(2, vo);
       }
       else if(vo.getI_category().equals("무기")){
-         item_except(item_list.get(3));
+    	 if(item_list.get(3)!=null)
+    		 item_except(item_list.get(3));
          item_apply(vo);
          item_list.set(3, vo);
       }
       else {
-         item_except(item_list.get(4));
+    	 if(item_list.get(4)!=null)
+    		 item_except(item_list.get(4));
          item_apply(vo);
          item_list.set(4, vo);
       }

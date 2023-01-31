@@ -15,7 +15,6 @@
 //선택한 캐릭터 정보 보내기
 	function choice(idx){
 		var c_idx = idx;
-		stage_val++;
 		
 		if(confirm("캐릭터를 선택하시겠습니까?")==false) return;
 		

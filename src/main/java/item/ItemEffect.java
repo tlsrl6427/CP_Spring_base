@@ -152,11 +152,16 @@ public class ItemEffect {
 						item_list.get(random_item[i]).setI_armor_percent(armor_percent_increase);
 					}
 				}
-			}
+				
+			}// end 방어구일때
 			item_list.get(random_item[i]);
 		}
 		//아이템 확인
 		for(int i=0; i<3; i++) {
+			ItemVo vo = item_list.get(random_item[i]);
+			int cookie = (vo.getI_ad() + vo.getI_ad_percent() + vo.getI_ap() + vo.getI_ap_percent() + vo.getI_critical()
+							+vo.getI_armor() + vo.getI_armor_percent() + vo.getI_hp() + vo.getI_hp_percent() + vo.getI_avd()) * 3/2;
+			item_list.get(random_item[i]).setI_cookie(cookie);//쿠키적용시키기
 			selected_item_list.add(item_list.get(random_item[i]));
 //			System.out.println("담아놓은 아이템: " +item_list.get(random_item[i]).getI_name());
 //			System.out.println("hp_increase: " +item_list.get(random_item[i]).getI_hp());

@@ -22,7 +22,7 @@ public class ItemVo {
 	
 	
 	int	i_effect;
-	
+	int 	i_cookie;
 	/*
 	 	i_effect
 	 	1. 피해감소
@@ -38,6 +38,12 @@ public class ItemVo {
 	
 	public int getI_idx() {
 		return i_idx;
+	}
+	public int getI_cookie() {
+		return i_cookie;
+	}
+	public void setI_cookie(int i_cookie) {
+		this.i_cookie = i_cookie;
 	}
 	public String getI_img() {
 		return i_img;
